@@ -40,5 +40,41 @@
 
 
 
+// const vinos = [
+//     { nombre: "Vino Tinto", precio: 5000},
+//     { nombre: "Vino Blanco", precio: 4000},
+//     { nombre: "Vino Rosado", precio: 4500}
+// ];
 
-console.log(prompt("hola"));
+// let total = 0;
+
+// Función para seleccionar vinos
+
+// function seleccionarVinos(){
+//     let seleccion = prompt("Que vino quieres? (1: Vino Tinto, 2: Vino Blanco 3: Vino Rosado)");
+//     alert("usted selecciono " + seleccion);
+
+//     confirm("Desea hacer otra selección?")
+//     prompt("Que vino quieres? (1: Vino Tinto, 2: Vino Blanco 3: Vino Rosado)");
+
+//     alert("Usted a seleccionado" + seleccion)
+// }
+
+// function seleccionarVinos(){
+//     for(let i = 0, i < 5, i++){
+    
+//     }
+// }
+
+
+
+// console.log(seleccionarVinos());
+
+// function seleccionarPromociones(){
+
+// }
+
+
+// // Alert / Ticket final
+
+// alert 
