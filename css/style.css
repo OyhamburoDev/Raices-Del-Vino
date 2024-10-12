@@ -1,7 +1,33 @@
+.bodyIndex {
+  background-image: url(../images/wine-2853916_1920.jpg);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
 .tituloIndex {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: rgb(59, 62, 77);
+  color: rgb(255, 255, 255);
+  margin-bottom: 0px;
+}
+
+.logo-marca-index {
+  border-radius: 100%;
+  width: 5rem;
+  height: 5rem;
+}
+
+.class-titulo-index {
+  margin-left: 16px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+
+.card-copa-index {
+  height: 20rem;
 }
