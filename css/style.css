@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-.tituloIndex {
+.publicidadUnoIndex {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,3 +31,44 @@
 .card-copa-index {
   height: 20rem;
 }
+
+.card-index-texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.playfair-display-title {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700; /* Negrita */
+  font-style: normal;
+}
+
+.playfair-display-body {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Normal */
+  font-style: normal;
+}
+
+@media (max-width: 576px) {
+  .class-titulo-index {
+    margin-left: 0px;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar-index {
+    display: flex;
+  }
+  .navbar-index .logo-marca-index {
+    margin-left: 3.5rem;
+  }
+  .navbar-index .enlaces-index {
+    margin-left: 25rem;
+    padding: 0px;
+    justify-content: start;
+  }
+}/*# sourceMappingURL=style.css.map */

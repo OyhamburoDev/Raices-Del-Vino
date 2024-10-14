@@ -1,0 +1,22 @@
+@media (max-width: 576px) {
+    .class-titulo-index{
+        margin-left: 0px;
+    // display: none;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .navbar-index{
+        display: flex;
+        .logo-marca-index{
+            margin-left: 3.5rem;
+        }
+        .enlaces-index{
+            margin-left: 25rem;
+            padding: 0px;
+            justify-content: start;
+        }
+    }
+}
+ 
