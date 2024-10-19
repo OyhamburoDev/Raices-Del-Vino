@@ -60,6 +60,7 @@ function elegirVino(){
 
     if (isNaN(tipoDeVino) || tipoDeVino < 1 || tipoDeVino > 3){
       tipoDeVino = alert("Debes colocar un número valido");
+      continue;
     }
   
     deseaPedirDenuevo = confirm("Quieres hacer otro pedido?")  // Aquí si lo deseo transformo el ciclo en falso, para que termine.
