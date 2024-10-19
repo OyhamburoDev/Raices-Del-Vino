@@ -30,10 +30,11 @@ const quieroDescuento = confirm("¿Tienes un cupón de descuento?");
 if(quieroDescuento){
     const cupones = prompt("Escribi tu cupón").toLocaleLowerCase();
     const precioFinalConDescuento = calcularDescuentos(total, cupones);
-    alert(`Tu precio final es de $${precioFinalConDescuento}`);
+    alert(`Tu precio final con descuento es de $${precioFinalConDescuento}`);
     alert(`Gracias por tu compra.`);
+}else{
+  alert("Gracias por tu compra");
 }
-
 
 }
 
@@ -44,7 +45,7 @@ function elegirVino(){
     
     while(deseaPedirDenuevo){
     const tipoDeVino = parseInt(prompt("Elija un número del 1 al 3 para seleccionar su vino: \n 1) Vino Tinto $5000\n 2) Vino Blanco $4000 \n 3) Vino Rosado $4500"));
-    const cantidadDeBotellas = parseInt(prompt("Coloque la cantidad de botellas:"));
+    const cantidadDeBotellas = parseInt(prompt("Por favor, ingresa la cantidad de botellas (en números):"));
 
     if ( tipoDeVino >= 1 && tipoDeVino <= 3){
       const elegirDeLaLista = vinos[tipoDeVino -1];   // Aquí elijo el elemento de la lista de arrays y le resto 1, ya que comienzan en 0.
