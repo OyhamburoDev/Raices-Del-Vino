@@ -25,7 +25,7 @@ if(quieroComprar){
 
 const total = sumaDePedidos (pedidosSolicitados); // Luego de elegir los vinos, llamamos a la función que suma los precios, la guardamos en una variable y le pasamos un argumento real.
 alert(`El total de tu pedido es de $${total}`);
-
+alert("Recuerda que el cupón de descuento se encuentra en un alert de advertencia en la página.");
 const quieroDescuento = confirm("¿Tienes un cupón de descuento?");
 if(quieroDescuento){
     const cupones = prompt("Escribi tu cupón").toLocaleLowerCase();
