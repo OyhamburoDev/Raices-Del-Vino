@@ -59,7 +59,7 @@ function elegirVino(){
     } 
 
     if (isNaN(tipoDeVino) || tipoDeVino < 1 || tipoDeVino > 3){
-      tipoDeVino = alert("Debes colocar un número valido");
+      alert("Debes colocar un número valido");
       continue;
     }
   
