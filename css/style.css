@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .bodyIndex {
   background-image: url(../images/wine-2853916_1920.jpg);
   background-repeat: no-repeat;
@@ -22,22 +23,20 @@
   height: 5rem;
 }
 
-.class-titulo-index {
-  margin-left: 16px;
-  margin-right: 0px;
-  margin-bottom: 0px;
+.card-title {
+  font-size: 1rem;
 }
 
-.card-copa-index {
-  height: 18rem;
+.card-text {
+  font-size: 1rem;
 }
 
-.card-index-texto {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.card-img-top {
+  height: 12rem;
+}
+
+.btn {
+  font-size: 1rem;
 }
 
 .playfair-display-title {
@@ -54,9 +53,102 @@
   font-style: normal;
 }
 
+.card input, .card button {
+  width: 50%; /* Ancho del 50% de la card */
+  padding: 5px;
+  font-size: 14px;
+  margin-bottom: 10px; /* Espacio entre el input y el botón */
+}
+
+.card button {
+  cursor: pointer;
+}
+
+.containerForm {
+  background-color: beige;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espacio entre los dos div */
+  padding: 20px;
+}
+
+.box {
+  width: 40%; /* Puedes ajustar el ancho */
+  height: 400px; /* Altura de los div */
+}
+
+.box1 {
+  background-color: #010203;
+}
+.box1 h2 {
+  text-align: center;
+  color: white;
+  padding-top: 1rem;
+}
+.box1 form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+.box1 form label {
+  color: white;
+  text-align: center;
+}
+.box1 form input {
+  width: 100%;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.box2 {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Estilos para cada producto en el carrito */
+.producto-carrito {
+  display: flex;
+  align-items: center; /* Alinea el texto y el botón en el mismo nivel */
+  justify-content: space-between; /* Espacia el botón de la información del producto */
+  padding: 5px 0; /* Reduce el padding */
+  border-bottom: 1px solid #ddd; /* Línea de separación */
+  font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
+}
+
+/* Estilo para los párrafos dentro del producto */
+.producto-carrito p {
+  margin: 2px 0; /* Reduce el margen entre párrafos */
+}
+
+/* Estilo específico para el botón de eliminar */
+.eliminar-btn {
+  background: none; /* Quita el fondo */
+  border: none; /* Quita el borde */
+  color: #ff0000; /* Color rojo para el botón */
+  cursor: pointer;
+  font-size: 1.2rem; /* Tamaño de la cruz */
+  margin-left: 10px; /* Espacio a la izquierda de la cruz */
+}
+
 @media (max-width: 576px) {
   .class-titulo-index {
     margin-left: 0px;
+  }
+  .containerForm {
+    flex-direction: column; /* Cambia la dirección de los div a columna */
+    align-items: center; /* Alinea los div al centro en la vista móvil */
+    gap: 2px; /* Espacio entre los dos div */
+    padding: 0px;
+  }
+  .box {
+    width: 60%; /* Puedes ajustar el ancho */
+    height: 350px; /* Altura de los div */
   }
 }
 @media (max-width: 992px) {

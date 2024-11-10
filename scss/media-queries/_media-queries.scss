@@ -3,6 +3,17 @@
         margin-left: 0px;
 
     }
+
+    .containerForm {
+        flex-direction: column; /* Cambia la dirección de los div a columna */
+        align-items: center; /* Alinea los div al centro en la vista móvil */
+        gap: 2px; /* Espacio entre los dos div */
+        padding: 0px;
+      }
+      .box {
+        width: 60%; /* Puedes ajustar el ancho */
+        height: 350px; /* Altura de los div */
+      }
    
 }
 

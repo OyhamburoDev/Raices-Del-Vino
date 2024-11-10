@@ -61,6 +61,7 @@
                   >Blancos</a
                 >
               </li>
+            </li>
               <li class="nav-item mx-4">
                 <a class="nav-link fs-4 px-3 playfair-display-body" href="#"
                   >Rosados</a
@@ -76,75 +77,159 @@
         ¡Obtén 10% de descuento con el código <strong>Mendoza2025</strong>!
       </div>
     </section>
+
+    <!-- AQUÍ COMIENZA EL MAIN -->
     <main>
-      <div class="container mt-5">
+      <div class="container">
         <div class="row justify-content-center">
-          <!-- Primera Card -->
-          <div class="col-md-4 pb-4">
-            <div class="card">
-              <img
-                src="./images/vino-tinto.jpg"
-                class="card-img-top card-copa-index"
-                alt="fotografía de una copa de vino tinto"
-              />
-              <div class="card-body card-index-texto">
-                <h5 class="card-title playfair-display-body">Malbec</h5>
-                <p class="card-text playfair-display-body">
-                  Uno de los vinos tintos más icónicos de Mendoza, con un sabor
-                  inconfundible.
-                </p>
-                <p class="card-text">Precio: $8500</p>
-                <a href="#" class="btn btn-primary">Comprar</a>
+      <!-- PRIMER CARD -->
+          <div class="col-6 col-lg-2 mb-4">
+            <div id="card-vino-tinto-uno" class="card" style="width: 100%">
+              <img src="./images/botella-vino-tinto-uno.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Catena Zapata</h5>
+                <p class="card-text">Vino Tinto</p>
+                <p class="card-precio">$5000 </p>
+                <label for="cantidad">Cantidad:</label>
+  <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+                <a href="#" class="btn btn-primary">Agregar</a>
               </div>
             </div>
           </div>
-
-          <!-- Segunda Card -->
-          <div class="col-md-4 pb-4">
-            <div class="card">
-              <img
-                src="./images/vino-blanco.jpg"
-                class="card-img-top card-copa-index"
-                alt="fotografía de una copa de vino blanco"
-              />
-              <div class="card-body card-index-texto">
-                <h5 class="card-title playfair-display-body">Chardonnay</h5>
-                <p class="card-text playfair-display-body">
-                  Un vino blanco fresco y afrutado, perfecto para acompañar una
-                  buena comida.
-                </p>
-                <p class="card-text">Precio: $7300</p>
-                <a href="#" class="btn btn-primary">Comprar</a>
+   <!-- SEGUNDA CARD -->
+          <div class="col-6 col-lg-2 mb-4">
+            <div id="card-vino-tinto-dos" class="card" style="width: 100%">
+              <img src="./images/botella-vino-tinto-dos.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Bodega Norton</h5>
+                <p class="card-text">Vino Tinto</p>
+                <p class="card-precio">$5000 </p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+                <a href="#" class="btn btn-primary">Agregar</a>
               </div>
             </div>
           </div>
-
-          <!-- Tercera Card -->
-          <div class="col-md-4 pb-4">
-            <div class="card">
-              <img
-                src="./images/vino-rosado.jpg"
-                class="card-img-top card-copa-index"
-                alt="fotografía de una copa de vino rosado"
-              />
-              <div class="card-body card-index-texto">
-                <h5 class="card-title playfair-display-body">
-                  Cabernet Franc Rosé
-                </h5>
-                <p class="card-text playfair-display-body">
-                  Un delicado vino rosado con notas frescas y afrutadas para
-                  disfrutar en verano.
-                </p>
-                <p class="card-text">Precio: $6900</p>
-                <a href="#" class="btn btn-primary">Comprar</a>
+   <!-- TERCERA CARD -->
+          <div class="col-6 col-lg-2 mb-4">
+            <div id="card-vino-blanco-uno" class="card" style="width: 100%">
+              <img src="./images/botella-vino-blanco-uno.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Bodega Luigi Bosca</h5>
+                <p class="card-text">Vino Blanco</p>
+                <p class="card-precio">$4000 </p>
+                <label for="cantidad">Cantidad:</label>
+  <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+                <a href="#" class="btn btn-primary">Agregar</a>
+              </div>
+            </div>
+          </div>
+   <!-- CUARTA CARD -->
+          <div class="col-6 col-lg-2 mb-4">
+            <div id="card-vino-blanco-dos" class="card" style="width: 100%">
+              <img src="./images/botella-vino-blanco-dos.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Bodega Zuccardi</h5>
+                <p class="card-text">Vino Blanco</p>
+                <p class="card-precio">$4000 </p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+                <a href="#" class="btn btn-primary">Agregar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Fila 2: PRIMERA CARD -->
+        <div class="row justify-content-center">
+          <div class="col-6 col-lg-2 mb-4">
+            <div id="card-vino-rosado-uno" class="card" style="width: 100%">
+              <img src="./images/botella-vino-rosado-uno.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Bodega Susana Balbo</h5>
+                <p class="card-text">Vino Rosado</p>
+                <p class="card-precio">$4500 </p>
+                <label for="cantidad">Cantidad:</label>
+  <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+                <a href="#" class="btn btn-primary">Agregar</a>
+              </div>
+            </div>
+          </div>
+   <!-- Fila 2: SEGUNDA CARD -->
+          <div class="col-6 col-lg-2 mb-4">
+            <div id="card-vino-rosado-dos" class="card" style="width: 100%">
+              <img src="./images/botella-vino-rosado-dos.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Bodega Chandon</h5>
+                <p class="card-text">Vino Rosado</p>
+                <p class="card-precio">$4500 </p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+                <a href="#" class="btn btn-primary">Agregar</a>
+              </div>
+            </div>
+          </div>
+   <!-- Fila 2: TERCER CARD -->
+          <div class="col-6 col-lg-2 mb-4">
+            <div id="card-vino-accesorio-uno" class="card" style="width: 100%">
+              <img src="./images/accesorio-uno.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Sacacorchos de palanca</h5>
+                <p class="card-text">Accesorio"sommelier"</p>
+                <p class="card-precio">$2000 </p>
+                <label for="cantidad">Cantidad:</label>
+  <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+                <a href="#" class="btn btn-primary">Agregar</a>
+              </div>
+            </div>
+          </div>
+   <!-- Fila 2: CUARTA CARD -->
+          <div class="col-6 col-lg-2 mb-4">
+            <div class="card" style="width: 100%">
+              <img src="./images/ver-mas.png" class="card-img-top" alt="..." />
+              <!-- <div class="card-body"> -->
+                <!-- <h5 class="card-title">Card title 8</h5>
+                <p class="card-text">Some text here.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </main>
+
+    <!-- AQUI COMIENZA EL FORMULARIO Y EL CARRITO -->
+    <section class="containerForm">
+      <div class="box box1">
+        <h2>Formulario de Compra</h2>
+        <form>
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="phone">Teléfono:</label>
+          <input type="tel" id="phone" name="phone" required />
+
+          <label for="address">Dirección:</label>
+          <input type="text" id="address" name="address" required />
+
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+      <div class="box box2">
+        <h2>Carrito:</h2>
+        <div id="cartDetails" class="cart-details">
+          <hr />
+          
+        </div>
+        <p id="precioTotal"></p>
+      </div>
+    </section>
+      
     <!-- Footer -->
-    <footer class="bg-dark text-white mt-5">
+    <footer class="bg-dark text-white ">
       <div class="container p-4">
         <div class="row">
           <!-- Sección 1: Información de contacto -->
