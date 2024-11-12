@@ -9,6 +9,15 @@ window.onload = function() {
 }
 
 
+// OBTENER EL CARRITO DE LOCAL STORAGE  recupera y muestra los datos guardados.
+function cargarCarritoDeLocalStorage() {
+    const carritoGuardado = localStorage.getItem("carrito"); // Obtenemos el carrito del Local Storage
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado); // Convertimos el string de vuelta a un objeto
+        mostrarCarrito(); // Mostramos el carrito recuperado
+    }
+}
+
 // CLASE CONSTRUCTORA PARA ARMAR LOS OBJETOS DEL CARRITO
 class Producto {
     constructor(nombre, tipoDeVino, precio, cantidad) {
@@ -21,7 +30,6 @@ class Producto {
 
 // LLAMAMOS A TODOS LOS BOTONES DE LAS CARDS
 const botonesAgregar = document.querySelectorAll('.btn-primary');
-
 
 // RECORREMOS CADA BOTON Y LE ASIGNAMOS EL EVENTO "CLICK"
 botonesAgregar.forEach(boton => {
@@ -45,6 +53,13 @@ botonesAgregar.forEach(boton => {
         agregarProducto(producto);
     });
 });
+
+// AGREGAR LOS PRODUCTOS SELECCIONADOS POR EL USUSARIO AL CARRITO
+function agregarProducto(producto) {
+    carrito.push(producto); // Añadimos el producto al carrito
+    mostrarCarrito(); // Mostramos el carrito actualizado en la página
+    guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
+}
 
 // MOSTRAR LOS PRODUCTOS EN EL CARRITO
 function mostrarCarrito() {
@@ -97,9 +112,7 @@ function mostrarCarrito() {
     botonFinalizar.id = "botonFinalizarCompra"; // le asignamos un id
     botonFinalizar.textContent = "Finalizar compra"; // le asignamos un texto dentro del botón.
 
-    // si el carrito esta vacio, deshabilitamos el botón
-    botonFinalizar.disabled = carrito.length === 0;
-
+   
   // Añadir el evento de finalizar compra
     botonFinalizar.addEventListener("click", function() {
         finalizarCompra(); // Llamar a la función de finalizar compra
@@ -111,15 +124,18 @@ function mostrarCarrito() {
   contenedorBotonFinalizar.innerHTML = '';
   contenedorBotonFinalizar.appendChild(botonFinalizar);   
   
-
+  actualizarEstadoBotonFinalizar(); // Llamamos para que el botón esté actualizado cada vez que se muestra el carrito
 }
 
+// Función que verifica si el formulario está completo
+function formularioCompleto() {
+    const nombre = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const telefono = document.getElementById("phone").value;
+    const direccion = document.getElementById("address").value;
 
-// AGREGAR LOS PRODUCTOS SELECCIONADOS POR EL USUSARIO AL CARRITO
-function agregarProducto(producto) {
-    carrito.push(producto); // Añadimos el producto al carrito
-    mostrarCarrito(); // Mostramos el carrito actualizado en la página
-    guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
+    // Verificamos si ambos campos tienen valor
+    return nombre !== "" && email !== "" && telefono !== "" && direccion !== "" ;
 }
 
 // ELIMINAR LOS PRODUCTOS SELECCIONADOS DEL CARRITO
@@ -128,6 +144,7 @@ function eliminarProducto(index) {
     mostrarCarrito(); // Mostramos el carrito actualizado
     guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
 }
+
 
 // FUNCION FINALIZAR COMPRA
 function finalizarCompra() {
@@ -146,17 +163,23 @@ function finalizarCompra() {
     }
 }
 
+
+
 // GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito como texto JSON
 }
 
-// OBTENER EL CARRITO DE LOCAL STORAGE  recupera y muestra los datos guardados.
-function cargarCarritoDeLocalStorage() {
-    const carritoGuardado = localStorage.getItem("carrito"); // Obtenemos el carrito del Local Storage
-    if (carritoGuardado) {
-        carrito = JSON.parse(carritoGuardado); // Convertimos el string de vuelta a un objeto
-        mostrarCarrito(); // Mostramos el carrito recuperado
-    }
-}
 
+// Escuchar cambios en los campos del formulario para actualizar el estado del botón "Finalizar compra"
+document.getElementById("name").addEventListener("input", actualizarEstadoBotonFinalizar);
+document.getElementById("email").addEventListener("input", actualizarEstadoBotonFinalizar);
+document.getElementById("phone").addEventListener("input", actualizarEstadoBotonFinalizar);
+document.getElementById("address").addEventListener("input", actualizarEstadoBotonFinalizar);
+
+// Función para actualizar el estado del botón "Finalizar compra"
+function actualizarEstadoBotonFinalizar() {
+    const botonFinalizar = document.getElementById("botonFinalizarCompra");
+    // Habilita el botón si el carrito tiene productos y el formulario está completo
+    botonFinalizar.disabled = carrito.length === 0 || !formularioCompleto();
+}
