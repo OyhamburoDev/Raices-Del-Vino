@@ -1,11 +1,15 @@
 
-
+// CARGAR EL CARRITO DESDE LOCAL STORAGE CUANDO LA PÁGINA SE CARGA
 window.onload = function() {
-    cargarCarritoDeLocalStorage(); // Cargar el carrito desde Local Storage cuando la página se carga
+    cargarCarritoDeLocalStorage(); 
 }
 
-let carrito = []; // Inicializamos el carrito como un array vacío
 
+// INICIALIZAMOS EL CARRITO COMO UN ARRAY VACIO
+let carrito = []; 
+
+
+// CLASE CONSTRUCTORA PARA ARMAR LOS OBJETOS DEL CARRITO
 class Producto {
     constructor(nombre, tipoDeVino, precio, cantidad) {
         this.nombre = nombre;
@@ -15,9 +19,11 @@ class Producto {
     }
 }
 
+// LLAMAMOS A TODOS LOS BOTONES DE LAS CARDS
 const botonesAgregar = document.querySelectorAll('.btn-primary');
 
-// Recorrer cada botón y asignarle el evento click
+
+// RECORREMOS CADA BOTON Y LE ASIGNAMOS EL EVENTO "CLICK"
 botonesAgregar.forEach(boton => {
     boton.addEventListener("click", function(e) {
         e.preventDefault(); // Evitar que el enlace haga su acción por defecto
@@ -27,9 +33,9 @@ botonesAgregar.forEach(boton => {
 
         // Obtener los datos de la card
         const nombre = card.querySelector('.card-title').textContent; // Nombre del producto
-        const tipoDeVino = card.querySelector('.card-text').textContent;
+        const tipoDeVino = card.querySelector('.card-text').textContent; // tipo de vino
         const precioTexto = card.querySelector('.card-precio').textContent; 
-        const precio = parseInt(precioTexto.split('$')[1].trim());
+        const precio = parseInt(precioTexto.split('$')[1].trim()); // Obtenemos el solamente el precio en valor numérico
         const cantidad = parseInt(card.querySelector('input[name="cantidad"]').value); // Obtener la cantidad seleccionada
 
         // Crear un nuevo producto
@@ -40,6 +46,7 @@ botonesAgregar.forEach(boton => {
     });
 });
 
+// MOSTRAR LOS PRODUCTOS EN EL CARRITO
 function mostrarCarrito() {
     const cartDetails = document.getElementById("cartDetails");
     cartDetails.innerHTML = ''; // Limpiar el carrito antes de mostrarlo
@@ -86,22 +93,27 @@ function mostrarCarrito() {
     document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $${total}`;
 }
 
+
+// AGREGAR LOS PRODUCTOS SELECCIONADOS POR EL USUSARIO AL CARRITO
 function agregarProducto(producto) {
     carrito.push(producto); // Añadimos el producto al carrito
     mostrarCarrito(); // Mostramos el carrito actualizado en la página
     guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
 }
 
+// ELIMINAR LOS PRODUCTOS SELECCIONADOS DEL CARRITO
 function eliminarProducto(index) {
     carrito.splice(index, 1); // Eliminamos el producto
     mostrarCarrito(); // Mostramos el carrito actualizado
     guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
 }
 
+// GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito como texto JSON
 }
 
+// OBTENER EL CARRITO DE LOCAL STORAGE
 function cargarCarritoDeLocalStorage() {
     const carritoGuardado = localStorage.getItem("carrito"); // Obtenemos el carrito del Local Storage
     if (carritoGuardado) {

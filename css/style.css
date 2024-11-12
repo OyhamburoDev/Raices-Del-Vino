@@ -75,7 +75,7 @@
 }
 
 .box {
-  width: 40%; /* Puedes ajustar el ancho */
+  width: 40%;
   height: 400px; /* Altura de los div */
 }
 
@@ -114,11 +114,11 @@
 /* Estilos para cada producto en el carrito */
 .producto-carrito {
   display: flex;
-  align-items: center; /* Alinea el texto y el botón en el mismo nivel */
+  align-items: center;
   justify-content: space-between; /* Espacia el botón de la información del producto */
-  padding: 5px 0; /* Reduce el padding */
-  border-bottom: 1px solid #ddd; /* Línea de separación */
-  font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
 }
 
 /* Estilo para los párrafos dentro del producto */
@@ -136,60 +136,4 @@
   margin-left: 10px; /* Espacio a la izquierda de la cruz */
 }
 
-@media (max-width: 576px) {
-  .class-titulo-index {
-    margin-left: 0px;
-  }
-  .containerForm {
-    flex-direction: column; /* Cambia la dirección de los div a columna */
-    align-items: center; /* Alinea los div al centro en la vista móvil */
-    gap: 2px; /* Espacio entre los dos div */
-    padding: 0px;
-  }
-  .box {
-    width: 60%; /* Puedes ajustar el ancho */
-    height: 350px; /* Altura de los div */
-  }
-}
-@media (max-width: 992px) {
-  .enlaces-index {
-    margin-left: 1rem;
-    padding: 0px;
-    justify-content: center;
-  }
-}
-@media (max-width: 1200px) {
-  .enlaces-index {
-    margin-left: 2rem;
-    padding: 0px;
-    justify-content: start;
-  }
-}
-@media (min-width: 1200px) {
-  .navbar-index {
-    display: flex;
-  }
-  .navbar-index .logo-marca-index {
-    margin-left: 4rem;
-    margin-right: 1.3rem;
-  }
-  .navbar-index .enlaces-index {
-    margin-left: 7.5rem;
-    padding: 0px;
-    justify-content: start;
-  }
-}
-@media (min-width: 1400px) {
-  .navbar-index {
-    display: flex;
-  }
-  .navbar-index .logo-marca-index {
-    margin-left: 4rem;
-    margin-right: 1.3rem;
-  }
-  .navbar-index .enlaces-index {
-    margin-left: 20rem;
-    padding: 0px;
-    justify-content: start;
-  }
-}/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map */
