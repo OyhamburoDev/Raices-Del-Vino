@@ -1,12 +1,12 @@
 
-// CARGAR EL CARRITO DESDE LOCAL STORAGE CUANDO LA PÁGINA SE CARGA
+// INICIALIZAMOS EL CARRITO COMO UN ARRAY VACIO
+let carrito = []; 
+
+
+// CARGAR EL CARRITO DESDE LOCAL STORAGE CUANDO LA PÁGINA SE CARGA Y MOSTRARLO EN LA PÁGINA
 window.onload = function() {
     cargarCarritoDeLocalStorage(); 
 }
-
-
-// INICIALIZAMOS EL CARRITO COMO UN ARRAY VACIO
-let carrito = []; 
 
 
 // CLASE CONSTRUCTORA PARA ARMAR LOS OBJETOS DEL CARRITO
@@ -91,6 +91,27 @@ function mostrarCarrito() {
     });
 
     document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $${total}`;
+    
+    // crear boton de finalizar compra
+    const botonFinalizar = document.createElement("button");
+    botonFinalizar.id = "botonFinalizarCompra"; // le asignamos un id
+    botonFinalizar.textContent = "Finalizar compra"; // le asignamos un texto dentro del botón.
+
+    // si el carrito esta vacio, deshabilitamos el botón
+    botonFinalizar.disabled = carrito.length === 0;
+
+  // Añadir el evento de finalizar compra
+    botonFinalizar.addEventListener("click", function() {
+        finalizarCompra(); // Llamar a la función de finalizar compra
+    });
+
+  //Añadimos el botón al contenedor si el array carrito esta lleno
+  
+  const contenedorBotonFinalizar = document.querySelector(".botonFinalizarContenedor");
+  contenedorBotonFinalizar.innerHTML = '';
+  contenedorBotonFinalizar.appendChild(botonFinalizar);   
+  
+
 }
 
 
@@ -108,12 +129,29 @@ function eliminarProducto(index) {
     guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
 }
 
+// FUNCION FINALIZAR COMPRA
+function finalizarCompra() {
+    if (carrito.length > 0) {
+        // Vaciar el carrito
+        carrito = [];
+
+        // Limpiar el carrito en LocalStorage
+        localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito vacío en LocalStorage
+
+        // Mostrar el mensaje de agradecimiento
+        const contenedorCarrito = document.querySelector('.box2');
+        contenedorCarrito.innerHTML = `<h2>¡Gracias por tu compra!</h2><p>Tu compra ha sido exitosa.</p>`;
+    } else {
+        alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
+    }
+}
+
 // GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito como texto JSON
 }
 
-// OBTENER EL CARRITO DE LOCAL STORAGE
+// OBTENER EL CARRITO DE LOCAL STORAGE  recupera y muestra los datos guardados.
 function cargarCarritoDeLocalStorage() {
     const carritoGuardado = localStorage.getItem("carrito"); // Obtenemos el carrito del Local Storage
     if (carritoGuardado) {
@@ -121,3 +159,4 @@ function cargarCarritoDeLocalStorage() {
         mostrarCarrito(); // Mostramos el carrito recuperado
     }
 }
+
