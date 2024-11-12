@@ -136,4 +136,62 @@
   margin-left: 10px; /* Espacio a la izquierda de la cruz */
 }
 
+@media (max-width: 576px) {
+  .class-titulo-index {
+    margin-left: 0px;
+  }
+  .containerForm {
+    flex-direction: column; /* Cambia la dirección de los div a columna */
+    align-items: center; /* Alinea los div al centro en la vista móvil */
+    gap: 2px; /* Espacio entre los dos div */
+    padding: 0px;
+  }
+  .box {
+    width: 60%; /* Puedes ajustar el ancho */
+    height: 350px; /* Altura de los div */
+  }
+}
+@media (max-width: 992px) {
+  .enlaces-index {
+    margin-left: 1rem;
+    padding: 0px;
+    justify-content: center;
+  }
+}
+@media (max-width: 1200px) {
+  .enlaces-index {
+    margin-left: 2rem;
+    padding: 0px;
+    justify-content: start;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar-index {
+    display: flex;
+  }
+  .navbar-index .logo-marca-index {
+    margin-left: 4rem;
+    margin-right: 1.3rem;
+  }
+  .navbar-index .enlaces-index {
+    margin-left: 7.5rem;
+    padding: 0px;
+    justify-content: start;
+  }
+}
+@media (min-width: 1400px) {
+  .navbar-index {
+    display: flex;
+  }
+  .navbar-index .logo-marca-index {
+    margin-left: 4rem;
+    margin-right: 1.3rem;
+  }
+  .navbar-index .enlaces-index {
+    margin-left: 20rem;
+    padding: 0px;
+    justify-content: start;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
