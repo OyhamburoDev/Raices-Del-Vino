@@ -192,6 +192,12 @@
     padding: 0px;
     justify-content: start;
   }
+  .card-body {
+    text-align: center;
+  }
+  .card-body p {
+    margin-bottom: 0px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
