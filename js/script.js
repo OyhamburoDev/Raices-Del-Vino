@@ -1,13 +1,123 @@
 
+
+// ARRAY DE PRODUCTOS.
+const productos = [
+    { nombre: "Catena Zapata", tipo: "Vino Tinto", precio: 5000, imagen: "./images/botella-vino-tinto-uno.jpg" },
+    { nombre: "Bodega Norton", tipo: "Vino Tinto", precio: 5000, imagen: "./images/botella-vino-tinto-dos.jpg" },
+    { nombre: "Bodega Luigi Bosca", tipo: "Vino Blanco", precio: 4000, imagen: "./images/botella-vino-blanco-uno.jpg" },
+    { nombre: "Bodega Zuccardi", tipo: "Vino Blanco", precio: 4000, imagen: "./images/botella-vino-blanco-dos.jpg" },
+    { nombre: "Bodega Susana Balbo", tipo: "Vino Rosado", precio: 4500, imagen: "./images/botella-vino-rosado-uno.jpg" },
+    { nombre: "Bodega Chandon", tipo: "Vino Rosado", precio: 4500, imagen: "./images/botella-vino-rosado-dos.jpg" },
+    { nombre: "Sacacorchos", tipo: "Accesorio", precio: 2000, imagen: "./images/accesorio-uno.jpg" },
+    { nombre: "Ver Más", tipo: "Opción", precio: null, imagen: "./images/ver-mas.png" },
+]
+
+
+// FUNCIÓN PARA GENERAR LAS CARDS EN EL INDEX CON CLASES DE BOOTSTRAP
+function generarCards(){
+  const contenedor = document.querySelector(".container");  // ---> este es el container principal
+
+  productos.forEach((producto, index)=>{
+  // creamos una fila cada 4 cards, para una mejor visualizacion en desktop
+    if(index % 4 === 0){
+        fila = document.createElement("div");
+        fila.classList.add("row", "justify-content-center");
+        contenedor.appendChild(fila);
+    }
+
+    // creamos la columma de la card
+    const cardCol = document.createElement("div");
+    cardCol.classList.add("col-6", "col-lg-2", "mb-4");
+    
+    // creamos el div de la card
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.style.width = "100%";
+
+    // Creamos la imagen
+    const img = document.createElement("img");
+    img.src = producto.imagen;
+    img.alt = producto.nombre;
+    img.classList.add("card-img-top");
+
+        // Si es el último producto (la opción "Ver Más"), solo agregamos la imagen
+        if (index === productos.length - 1) {
+            card.appendChild(img); // Solo agregar la imagen
+          } else {
+            // Si no es el último, agregamos los elementos habituales
+    // creamos otro div para contener título, parrafo, precio, cantidad y botón
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+
+    // títutlo
+    const titulo = document.createElement("h5");
+    titulo.classList.add("card-title");
+    titulo.textContent = producto.nombre;
+
+    // Tipo de vino.
+    const tipo = document.createElement("p");
+    tipo.classList.add("card-text");
+    tipo.textContent = producto.tipo;
+
+    // Precio
+    const precio = document.createElement("p");
+    precio.classList.add("card-precio");
+    precio.textContent = `$${producto.precio}`;
+
+     // Crear el input de cantidad y el botón
+     const labelCantidad = document.createElement("label");
+     labelCantidad.textContent = "Cantidad:";
+
+     const inputCantidad = document.createElement("input");
+     inputCantidad.type = "number";
+     inputCantidad.id = "cantidad";
+     inputCantidad.name = "cantidad";
+     inputCantidad.min = "1";
+     inputCantidad.value = "1";
+
+     const btnAgregar = document.createElement("a");
+     btnAgregar.href = "#";
+     btnAgregar.classList.add("btn", "btn-primary");
+     btnAgregar.textContent = "Agregar";
+
+
+
+// Agregar los elementos creados a la card
+card.appendChild(img); // Le agregamos la imagen
+card.appendChild(cardBody); // Le agregamos el div que engloba los elementos que faltan
+cardBody.appendChild(titulo);
+cardBody.appendChild(tipo);
+cardBody.appendChild(precio);
+cardBody.appendChild(labelCantidad);
+cardBody.appendChild(inputCantidad);
+cardBody.appendChild(btnAgregar);
+
+btnAgregar.addEventListener("click", function (e) {
+    e.preventDefault();  // Evita la acción por defecto del enlace
+    const cantidad = parseInt(inputCantidad.value);  // Obtener la cantidad seleccionada por el usuario
+    const productoAgregado = new Producto(producto.nombre, producto.tipo, producto.precio, cantidad);  // Crear el objeto Producto
+    agregarProducto(productoAgregado);  // Llamar a la función para agregar el producto al carrito
+});
+}
+
+// Agregar la columna a la fila
+fila.appendChild(cardCol);
+// Agregar la card a la columna
+cardCol.appendChild(card);
+});
+}
+
+generarCards();
+
+
+//  ------> CARRITO Y FORMULARIO <---------
 // INICIALIZAMOS EL CARRITO COMO UN ARRAY VACIO
 let carrito = []; 
-
 
 // CARGAR EL CARRITO DESDE LOCAL STORAGE CUANDO LA PÁGINA SE CARGA Y MOSTRARLO EN LA PÁGINA
 window.onload = function() {
     cargarCarritoDeLocalStorage(); 
 }
-
 
 // OBTENER EL CARRITO DE LOCAL STORAGE  recupera y muestra los datos guardados.
 function cargarCarritoDeLocalStorage() {
@@ -28,31 +138,6 @@ class Producto {
     }
 }
 
-// LLAMAMOS A TODOS LOS BOTONES DE LAS CARDS
-const botonesAgregar = document.querySelectorAll('.btn-primary');
-
-// RECORREMOS CADA BOTON Y LE ASIGNAMOS EL EVENTO "CLICK"
-botonesAgregar.forEach(boton => {
-    boton.addEventListener("click", function(e) {
-        e.preventDefault(); // Evitar que el enlace haga su acción por defecto
-
-        // Encontrar la card de la que se hizo clic
-        const card = boton.closest('.card'); 
-
-        // Obtener los datos de la card
-        const nombre = card.querySelector('.card-title').textContent; // Nombre del producto
-        const tipoDeVino = card.querySelector('.card-text').textContent; // tipo de vino
-        const precioTexto = card.querySelector('.card-precio').textContent; 
-        const precio = parseInt(precioTexto.split('$')[1].trim()); // Obtenemos el solamente el precio en valor numérico
-        const cantidad = parseInt(card.querySelector('input[name="cantidad"]').value); // Obtener la cantidad seleccionada
-
-        // Crear un nuevo producto
-        const producto = new Producto(nombre, tipoDeVino, precio, cantidad);
-
-        // Agregar el producto al carrito
-        agregarProducto(producto);
-    });
-});
 
 // AGREGAR LOS PRODUCTOS SELECCIONADOS POR EL USUSARIO AL CARRITO
 function agregarProducto(producto) {
@@ -164,12 +249,10 @@ function finalizarCompra() {
 }
 
 
-
 // GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito como texto JSON
 }
-
 
 // Escuchar cambios en los campos del formulario para actualizar el estado del botón "Finalizar compra"
 document.getElementById("name").addEventListener("input", actualizarEstadoBotonFinalizar);
