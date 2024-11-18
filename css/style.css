@@ -25,7 +25,7 @@
 .carrito-container #cantidadCarrito {
   position: absolute;
   top: 1px;
-  left: 65%;
+  left: 66%;
   transform: translateX(-50%);
   background-color: red;
   color: white;
@@ -218,8 +218,8 @@
     display: flex;
   }
   .navbar-index .logo-marca-index {
-    margin-left: 4rem;
-    margin-right: 1.3rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
   }
   .navbar-index .enlaces-index {
     margin-left: 20rem;
