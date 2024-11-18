@@ -77,7 +77,7 @@ function generarCards(){
 
      const btnAgregar = document.createElement("a");
      btnAgregar.href = "#";
-     btnAgregar.classList.add("btn", "btn-primary");
+     btnAgregar.classList.add("btn", "btn-danger");
      btnAgregar.textContent = "Agregar";
 
 

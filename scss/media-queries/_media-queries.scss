@@ -54,11 +54,16 @@
     .navbar-index{
         display: flex;
         .logo-marca-index{
-            margin-left: 0rem;
+            margin-left: 10px;
             margin-right: 0rem;
         }
+        h1{
+            margin-left: 20px;
+            margin-right: 0px;
+            font-size: 40px !important;
+        }
         .enlaces-index{
-            margin-left: 20rem;
+            margin-left: 15rem;
             padding: 0px;
             justify-content: start;
         }

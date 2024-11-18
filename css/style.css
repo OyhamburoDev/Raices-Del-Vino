@@ -59,6 +59,7 @@
 
 .btn {
   font-size: 1rem;
+  background-color: #a50000;
 }
 
 .playfair-display-title {
@@ -133,7 +134,7 @@
   margin-bottom: 10px;
 }
 .box2 #botonFinalizarCompra {
-  background-color: #007BFF;
+  background-color: #8b0000;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -142,7 +143,7 @@
   font-size: 18px;
 }
 .box2 #botonFinalizarCompra:hover {
-  background-color: #0056b3;
+  background-color: #3b0d0d;
 }
 
 /* Estilos para cada producto en el carrito */
@@ -218,11 +219,16 @@
     display: flex;
   }
   .navbar-index .logo-marca-index {
-    margin-left: 0rem;
+    margin-left: 10px;
     margin-right: 0rem;
   }
+  .navbar-index h1 {
+    margin-left: 20px;
+    margin-right: 0px;
+    font-size: 40px !important;
+  }
   .navbar-index .enlaces-index {
-    margin-left: 20rem;
+    margin-left: 15rem;
     padding: 0px;
     justify-content: start;
   }
