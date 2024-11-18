@@ -144,6 +144,14 @@ function agregarProducto(producto) {
     carrito.push(producto); // Añadimos el producto al carrito
     mostrarCarrito(); // Mostramos el carrito actualizado en la página
     guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
+    actualizarCarrito(); // Actualizar el contador del carrito
+    // Notificación elegante
+    Swal.fire({
+        title: '¡Producto agregado!',
+        text: `${producto.nombre} ha sido añadido al carrito.`,
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
 }
 
 // MOSTRAR LOS PRODUCTOS EN EL CARRITO
@@ -156,6 +164,7 @@ function mostrarCarrito() {
     carrito.forEach((producto, index) => {
         const productoDiv = document.createElement("div");
         productoDiv.classList.add("producto-carrito");
+        productoDiv.style.opacity = 0; // Animación de entrada
 
         // Crear elementos para cada parte del producto
         const nombreParrafo = document.createElement("p");
@@ -186,6 +195,12 @@ function mostrarCarrito() {
 
         // Añadir el producto completo al contenedor
         cartDetails.appendChild(productoDiv);
+
+        // Animación de entrada
+        setTimeout(() => {
+            productoDiv.style.opacity = 1;
+            productoDiv.style.transition = 'opacity 0.5s';
+        }, 100);
 
         total += producto.precio * producto.cantidad;
     });
@@ -225,9 +240,19 @@ function formularioCompleto() {
 
 // ELIMINAR LOS PRODUCTOS SELECCIONADOS DEL CARRITO
 function eliminarProducto(index) {
+    const productoEliminado = carrito[index].nombre; // Obtenemos el nombre del producto eliminado
     carrito.splice(index, 1); // Eliminamos el producto
     mostrarCarrito(); // Mostramos el carrito actualizado
     guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
+    actualizarCarrito(); // Actualizar el contador después de eliminar un producto
+
+ // Notificación elegante
+ Swal.fire({
+    title: 'Producto eliminado',
+    text: `${productoEliminado} fue eliminado del carrito.`,
+    icon: 'warning',
+    confirmButtonText: 'OK'
+});
 }
 
 
@@ -248,6 +273,18 @@ function finalizarCompra() {
     }
 }
 
+function actualizarCarrito(){
+    const cantidadElemento = document.getElementById("cantidadCarrito");
+    cantidadElemento.textContent = carrito.length // Mostramos el número de productos en el carrito
+
+    if (carrito.length > 0){
+        cantidadElemento.style.display = `inline-block`;
+    }else{
+        cantidadElemento.style.display = `none`;
+    }
+
+
+}
 
 // GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
