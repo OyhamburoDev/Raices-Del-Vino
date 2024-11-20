@@ -211,6 +211,7 @@ function mostrarCarrito() {
     const botonFinalizar = document.createElement("button");
     botonFinalizar.id = "botonFinalizarCompra"; // le asignamos un id
     botonFinalizar.textContent = "Finalizar compra"; // le asignamos un texto dentro del botón.
+    botonFinalizar.classList.add("checkout-btn");
 
    
   // Añadir el evento de finalizar compra
@@ -266,7 +267,7 @@ function finalizarCompra() {
         localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito vacío en LocalStorage
 
         // Mostrar el mensaje de agradecimiento
-        const contenedorCarrito = document.querySelector('.box2');
+        const contenedorCarrito = document.querySelector('.carrito-items');
         contenedorCarrito.innerHTML = `<h2>¡Gracias por tu compra!</h2><p>Tu compra ha sido exitosa.</p>`;
     } else {
         alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
@@ -303,3 +304,19 @@ function actualizarEstadoBotonFinalizar() {
     // Habilita el botón si el carrito tiene productos y el formulario está completo
     botonFinalizar.disabled = carrito.length === 0 || !formularioCompleto();
 }
+
+
+
+const carritoIcono = document.getElementById('carrito-icono');  // BOTON DE ABRIR
+const carritoSidebar = document.getElementById('carrito-sidebar');
+const carritoBotonCerrar = document.getElementById('close-carrito')
+
+// Abrir el carrito al hacer clic en el icono
+carritoIcono.addEventListener('click', () => {
+    carritoSidebar.classList.add('active');
+});
+
+// Cerrar el carrito al hacer clic en el botón de cierre
+carritoBotonCerrar.addEventListener('click', () => {
+    carritoSidebar.classList.remove('active');
+});
