@@ -45,21 +45,107 @@
   text-decoration: line-through;
 }
 
-.card-title {
-  font-size: 1rem;
+.card {
+  width: 160px;
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s ease;
+  font-family: "Arial", sans-serif;
 }
 
-.card-text {
-  font-size: 1rem;
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-img-top {
+  width: 100%;
   height: 12rem;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
-.btn {
-  font-size: 1rem;
-  background-color: #a50000;
+.card-body {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 5px 0;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 3px 0;
+}
+
+.divPrecio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.card-precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #d9534f;
+}
+
+.divInputButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cantidad-input {
+  width: 35px;
+  height: 25px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 12px;
+  background-color: #f8f8f8;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.cantidad-input:focus {
+  border-color: #d9534f;
+}
+
+.card-modern-btn {
+  background-color: #b02a2a; /* Rojo uva */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.card-modern-btn:hover {
+  background-color: #9b1e1e; /* Rojo más oscuro para el hover */
+  transform: scale(1.1);
+}
+
+.btn-radius {
+  border-radius: 50%;
+  width: 1.5rem; /* Ajusta el ancho y alto */
+  height: 1.5rem;
+  padding: 0; /* Para evitar que el texto afecte el tamaño */
+  display: inline-flex; /* Centrar el texto dentro del botón */
 }
 
 .playfair-display-title {
@@ -74,17 +160,6 @@
   font-optical-sizing: auto;
   font-weight: 400; /* Normal */
   font-style: normal;
-}
-
-.card input, .card button {
-  width: 50%; /* Ancho del 50% de la card */
-  padding: 5px;
-  font-size: 14px;
-  margin-bottom: 10px; /* Espacio entre el input y el botón */
-}
-
-.card button {
-  cursor: pointer;
 }
 
 .containerForm {
@@ -228,6 +303,12 @@
   color: #fff;
   border: none;
   cursor: pointer;
+}
+
+.boton-desactivado {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
 }
 
 @media (max-width: 576px) {

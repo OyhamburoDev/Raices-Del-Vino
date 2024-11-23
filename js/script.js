@@ -59,38 +59,54 @@ function generarCards(){
     tipo.classList.add("card-text");
     tipo.textContent = producto.tipo;
 
+    // Creamos un div para el precio
+    const divPrecio = document.createElement("div");
+    divPrecio.classList.add("divPrecio");
+
     // Precio
     const precio = document.createElement("p");
     precio.classList.add("card-precio");
     precio.textContent = `$${producto.precio}`;
 
-     // Crear el input de cantidad y el botón
-     const labelCantidad = document.createElement("label");
-     labelCantidad.textContent = "Cantidad:";
+    //  // Crear el input de cantidad y el botón
+    //  const labelCantidad = document.createElement("label");
+    //  labelCantidad.textContent = "Cantidad:";
+
+    // creamos otro div para el input y el button
+    const divInputButton = document.createElement("div");
+    divInputButton.classList.add("divInputButton");
+
 
      const inputCantidad = document.createElement("input");
+     inputCantidad.classList.add("cantidad-input")
      inputCantidad.type = "number";
      inputCantidad.id = "cantidad";
      inputCantidad.name = "cantidad";
      inputCantidad.min = "1";
      inputCantidad.value = "1";
 
-     const btnAgregar = document.createElement("a");
-     btnAgregar.href = "#";
-     btnAgregar.classList.add("btn", "btn-danger");
-     btnAgregar.textContent = "Agregar";
+      // Crear el botón con el icono de Font Awesome dentro
+      const btnAgregar = document.createElement("button");
+      btnAgregar.classList.add("card-modern-btn"); // Aplica la clase del botón de la card moderna
 
+      // Crear el icono de Font Awesome
+      const icono = document.createElement("i");
+      icono.classList.add("fas", "fa-plus"); // Aplica el icono de suma de Font Awesome
 
+      // Agregar el icono al botón
+      btnAgregar.appendChild(icono);
 
 // Agregar los elementos creados a la card
 card.appendChild(img); // Le agregamos la imagen
 card.appendChild(cardBody); // Le agregamos el div que engloba los elementos que faltan
 cardBody.appendChild(titulo);
 cardBody.appendChild(tipo);
-cardBody.appendChild(precio);
-cardBody.appendChild(labelCantidad);
-cardBody.appendChild(inputCantidad);
-cardBody.appendChild(btnAgregar);
+cardBody.appendChild(divPrecio);
+divPrecio.appendChild(precio);
+// cardBody.appendChild(labelCantidad);
+divPrecio.appendChild(divInputButton);
+divInputButton.appendChild(inputCantidad);
+divInputButton.appendChild(btnAgregar);
 
 btnAgregar.addEventListener("click", function (e) {
     e.preventDefault();  // Evita la acción por defecto del enlace
@@ -108,6 +124,16 @@ cardCol.appendChild(card);
 }
 
 generarCards();
+
+
+
+
+
+
+
+
+
+
 
 
 //  ------> CARRITO Y FORMULARIO <---------
@@ -145,6 +171,7 @@ function agregarProducto(producto) {
     mostrarCarrito(); // Mostramos el carrito actualizado en la página
     guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
     actualizarCarrito(); // Actualizar el contador del carrito
+    actualizarEstadoBotonPagar();  // Actualizar estado del botón de pago
     // Notificación elegante
     Swal.fire({
         title: '¡Producto agregado!',
@@ -158,6 +185,13 @@ function agregarProducto(producto) {
 function mostrarCarrito() {
     const cartDetails = document.getElementById("cartDetails");
     cartDetails.innerHTML = ''; // Limpiar el carrito antes de mostrarlo
+
+     if (carrito.length === 0) {
+        // Mostrar un mensaje si el carrito está vacío
+        cartDetails.innerHTML = `<p>No hay productos en el carrito.</p>`;
+        document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $0`;
+        return;
+    }
 
     let total = 0;
 
@@ -207,37 +241,37 @@ function mostrarCarrito() {
 
     document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $${total}`;
     
-    // crear boton de finalizar compra
-    const botonFinalizar = document.createElement("button");
-    botonFinalizar.id = "botonFinalizarCompra"; // le asignamos un id
-    botonFinalizar.textContent = "Finalizar compra"; // le asignamos un texto dentro del botón.
-    botonFinalizar.classList.add("checkout-btn");
+    // // crear boton de ir a pagar
+    // const botonFinalizar = document.createElement("button");
+    // botonFinalizar.id = "botonFinalizarCompra"; // le asignamos un id
+    // botonFinalizar.textContent = "Proceder al pago"; // le asignamos un texto dentro del botón.
+    // botonFinalizar.classList.add("checkout-btn");
 
    
-  // Añadir el evento de finalizar compra
-    botonFinalizar.addEventListener("click", function() {
-        finalizarCompra(); // Llamar a la función de finalizar compra
-    });
+//   // Añadir el evento de finalizar compra
+//     botonFinalizar.addEventListener("click", function() {
+//         finalizarCompra(); // Llamar a la función de finalizar compra
+//     });
 
   //Añadimos el botón al contenedor si el array carrito esta lleno
   
-  const contenedorBotonFinalizar = document.querySelector(".botonFinalizarContenedor");
-  contenedorBotonFinalizar.innerHTML = '';
-  contenedorBotonFinalizar.appendChild(botonFinalizar);   
+//   const contenedorBotonFinalizar = document.querySelector(".botonFinalizarContenedor");
+//   contenedorBotonFinalizar.innerHTML = '';
+//   contenedorBotonFinalizar.appendChild(botonFinalizar);   
   
-  actualizarEstadoBotonFinalizar(); // Llamamos para que el botón esté actualizado cada vez que se muestra el carrito
+//   actualizarEstadoBotonFinalizar(); // Llamamos para que el botón esté actualizado cada vez que se muestra el carrito
 }
 
-// Función que verifica si el formulario está completo
-function formularioCompleto() {
-    const nombre = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const telefono = document.getElementById("phone").value;
-    const direccion = document.getElementById("address").value;
+// // Función que verifica si el formulario está completo
+// function formularioCompleto() {
+//     const nombre = document.getElementById("name").value;
+//     const email = document.getElementById("email").value;
+//     const telefono = document.getElementById("phone").value;
+//     const direccion = document.getElementById("address").value;
 
-    // Verificamos si ambos campos tienen valor
-    return nombre !== "" && email !== "" && telefono !== "" && direccion !== "" ;
-}
+//     // Verificamos si ambos campos tienen valor
+//     return nombre !== "" && email !== "" && telefono !== "" && direccion !== "" ;
+// }
 
 // ELIMINAR LOS PRODUCTOS SELECCIONADOS DEL CARRITO
 function eliminarProducto(index) {
@@ -246,6 +280,7 @@ function eliminarProducto(index) {
     mostrarCarrito(); // Mostramos el carrito actualizado
     guardarCarritoEnLocalStorage(); // Guardamos el carrito actualizado en Local Storage
     actualizarCarrito(); // Actualizar el contador después de eliminar un producto
+    actualizarEstadoBotonPagar();  // Actualizar estado del botón de pago
 
  // Notificación elegante
  Swal.fire({
@@ -266,11 +301,16 @@ function finalizarCompra() {
         // Limpiar el carrito en LocalStorage
         localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito vacío en LocalStorage
 
-        // Mostrar el mensaje de agradecimiento
-        const contenedorCarrito = document.querySelector('.carrito-items');
-        contenedorCarrito.innerHTML = `<h2>¡Gracias por tu compra!</h2><p>Tu compra ha sido exitosa.</p>`;
+              // Mostrar el mensaje de agradecimiento
+              const contenedorCarrito = document.querySelector('.carrito-items');
+              contenedorCarrito.innerHTML = `<h2>¡Gracias por tu compra!</h2><p>Tu compra ha sido exitosa.</p>`;
+      
+              // Actualizar la vista del carrito (vaciar el carrito visualmente)
+              mostrarCarrito();  // Esta función debería mostrar el carrito vacío ahora
+              actualizarCarrito();  // Actualiza el contador de productos en el carrito (debe mostrar 0)
+              actualizarEstadoBotonPagar();  // Actualiza el estado del botón de pago (debe estar deshabilitado)
     } else {
-        alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
+        Swal.fire('El carrito está vacío', 'Agrega productos antes de finalizar la compra.', 'warning');
     }
 }
 
@@ -287,22 +327,81 @@ function actualizarCarrito(){
 
 }
 
+// Selecciona el botón "Ir a pagar"
+const botonPagar = document.querySelector('.boton-prueba');
+
+// Función para habilitar/deshabilitar el botón según el contenido del carrito
+function actualizarEstadoBotonPagar(){
+    console.log(carrito.length);  // Diagnóstico de la longitud del carrito
+    if(carrito.length === 0){
+        botonPagar.disabled = true;
+        botonPagar.classList.add('boton-desactivado');
+    }else{
+        botonPagar.disabled = false;
+        botonPagar.classList.remove('boton-desactivado');
+    }
+}
+
+actualizarEstadoBotonPagar()
+
+botonPagar.addEventListener('click', () => {
+    // Lanza el modal de SweetAlert2
+    Swal.fire({
+      title: 'Completa tu información',
+      html: `
+        <form id="formularioPago">
+          <input type="text" id="nombre" class="swal2-input" placeholder="Nombre" required>
+          <input type="email" id="email" class="swal2-input" placeholder="Correo electrónico" required>
+          <input type="text" id="direccion" class="swal2-input" placeholder="Dirección" required>
+        </form>
+      `,
+      showCancelButton: true,
+      confirmButtonText: 'Pagar',
+      cancelButtonText: 'Cancelar',
+      preConfirm: () => {
+        // Usamos setTimeout para asegurarnos de que los inputs estén disponibles
+        setTimeout(() => {
+          const nombre = document.getElementById('nombre');
+          const email = document.getElementById('email');
+          const direccion = document.getElementById('direccion');
+  
+          // Comprobamos si los elementos existen
+          if (!nombre || !email || !direccion) {
+            console.error('No se encontraron los elementos del formulario');
+            return Swal.showValidationMessage('Por favor completa todos los campos');
+          }
+  
+          // Obtener los valores de los inputs
+          const nombreValue = nombre.value;
+          const emailValue = email.value;
+          const direccionValue = direccion.value;
+  
+          // Mostrar los valores para depuración
+          console.log('Nombre:', nombreValue);
+          console.log('Email:', emailValue);
+          console.log('Dirección:', direccionValue);
+  
+          // Verificar si algún campo está vacío
+          if (!nombreValue || !emailValue || !direccionValue) {
+            Swal.showValidationMessage('Por favor completa todos los campos');
+            return false;
+          }
+  
+          // Si todo está bien, devolver los valores
+          return { nombre: nombreValue, email: emailValue, direccion: direccionValue };
+        }, 100); // Dar tiempo para que SweetAlert renderice los inputs
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Datos del formulario:', result.value);
+        Swal.fire('¡Gracias por tu compra!', '', 'success');
+      }
+    });
+  });
+
 // GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito como texto JSON
-}
-
-// Escuchar cambios en los campos del formulario para actualizar el estado del botón "Finalizar compra"
-document.getElementById("name").addEventListener("input", actualizarEstadoBotonFinalizar);
-document.getElementById("email").addEventListener("input", actualizarEstadoBotonFinalizar);
-document.getElementById("phone").addEventListener("input", actualizarEstadoBotonFinalizar);
-document.getElementById("address").addEventListener("input", actualizarEstadoBotonFinalizar);
-
-// Función para actualizar el estado del botón "Finalizar compra"
-function actualizarEstadoBotonFinalizar() {
-    const botonFinalizar = document.getElementById("botonFinalizarCompra");
-    // Habilita el botón si el carrito tiene productos y el formulario está completo
-    botonFinalizar.disabled = carrito.length === 0 || !formularioCompleto();
 }
 
 
@@ -320,3 +419,6 @@ carritoIcono.addEventListener('click', () => {
 carritoBotonCerrar.addEventListener('click', () => {
     carritoSidebar.classList.remove('active');
 });
+
+
+
