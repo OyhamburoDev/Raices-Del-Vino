@@ -204,35 +204,58 @@ function mostrarCarrito() {
        imagenParrafo.src = producto.imagen; // Mostrar la imagen del producto
        imagenParrafo.alt = producto.nombre;
 
+        const divNombreTipo = document.createElement("div");
+        divNombreTipo.classList.add("div-nombre-tipo");
 
         const nombreParrafo = document.createElement("p");
-        nombreParrafo.innerHTML = `<strong>Nombre:</strong> ${producto.nombre} - ${producto.tipoDeVino}`;
+        nombreParrafo.classList.add("nombreParrafo")
+        nombreParrafo.innerHTML = `<strong>${producto.nombre}</strong>`;
+
+        const tipoParrafo = document.createElement("p");
+        tipoParrafo.innerHTML = `${producto.tipoDeVino}`
+
+        divNombreTipo.appendChild(nombreParrafo);
+        divNombreTipo.appendChild(tipoParrafo);
+
+        const divCantPrecio = document.createElement("div");
+        divCantPrecio.classList.add("cantidad-precio");
 
         const cantidadParrafo = document.createElement("p");
-        cantidadParrafo.innerHTML = `<strong>Cantidad:</strong> ${producto.cantidad} - Precio por unidad: $${producto.precio}`;
+        cantidadParrafo.classList.add("cantidadParrafo")
+        cantidadParrafo.innerHTML = ` ${producto.cantidad} `;
 
         const precioTotalParrafo = document.createElement("p");
-        precioTotalParrafo.innerHTML = `<strong>Precio Total:</strong> $${producto.precio * producto.cantidad}`;
+        precioTotalParrafo.classList.add("precioTotalParrafo")
+        precioTotalParrafo.innerHTML = `$${producto.precio * producto.cantidad}`;
 
+        divCantPrecio.appendChild(cantidadParrafo);
+        divCantPrecio.appendChild(precioTotalParrafo);
+
+        
+        const divBtnEliminar = document.createElement("div");
+        divBtnEliminar.classList.add("divBtnEliminar");
         // Crear el botón de eliminar
-        const botonEliminar = document.createElement("button");
-        botonEliminar.classList.add("eliminar-btn");
-        botonEliminar.textContent = "❌";
-        botonEliminar.setAttribute("data-index", index);
+const botonEliminar = document.createElement("button");
+botonEliminar.classList.add("eliminar-btn");
+botonEliminar.setAttribute("data-index", index);
+
+// Crear el <span> y agregarlo al botón
+const spanEliminar = document.createElement("span");
+spanEliminar.innerHTML = "&#x2715;"; // Símbolo de la cruz
+botonEliminar.appendChild(spanEliminar);
 
         // Añadir el evento de clic al botón
         botonEliminar.addEventListener("click", function() {
             eliminarProducto(index);
         });
 
-        // Agregar todo al div del producto
+        // Agregar todo al contenedor principal
         productoDiv.appendChild(imagenParrafo);
-        productoDiv.appendChild(nombreParrafo);
-        productoDiv.appendChild(cantidadParrafo);
-        productoDiv.appendChild(precioTotalParrafo);
+        productoDiv.appendChild(divNombreTipo); 
+        productoDiv.appendChild(divCantPrecio);
         productoDiv.appendChild(botonEliminar);
 
-        // Añadir el producto completo al contenedor
+        // Añadir el producto al carrito
         cartDetails.appendChild(productoDiv);
 
         // Animación de entrada

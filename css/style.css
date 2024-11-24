@@ -43,6 +43,7 @@
 
 .textoTachado {
   text-decoration: line-through;
+  border-radius: 0;
 }
 
 .card {
@@ -141,46 +142,22 @@
 }
 
 /* Estilos para cada producto en el carrito */
-.producto-carrito {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Espacia el botón de la información del producto */
-  padding: 5px 0;
-  border-bottom: 1px solid #ddd;
-  font-size: 0.9rem;
-}
-.producto-carrito .imagen-carrito {
-  width: 3rem;
-  height: 3rem;
-}
-
-/* Estilo para los párrafos dentro del producto */
-.producto-carrito p {
-  margin: 2px 0; /* Reduce el margen entre párrafos */
-}
-
-/* Estilo específico para el botón de eliminar */
-.eliminar-btn {
-  background: none; /* Quita el fondo */
-  border: none; /* Quita el borde */
-  color: #ff0000; /* Color rojo para el botón */
-  cursor: pointer;
-  font-size: 1.2rem; /* Tamaño de la cruz */
-  margin-left: 10px; /* Espacio a la izquierda de la cruz */
-}
-
 .carrito-sidebar {
   position: fixed;
   top: 0;
   right: -100%; /* Fuera de la pantalla */
   width: 30rem;
   height: 100%;
-  background: #fff;
-  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+  border-radius: 12px 0 0 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 15px;
   transition: right 0.3s ease;
   z-index: 999;
   display: flex;
   flex-direction: column;
+  font-family: "Arial", sans-serif;
+  overflow-y: auto; /* Scroll para contenido largo */
 }
 
 /* Activo: dentro de la pantalla */
@@ -193,39 +170,137 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background: #f8f8f8;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.carrito-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-/* Botón de cierre */
-.cerrar-btn {
+#close-carrito {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 1.5rem;
+  color: #555;
   cursor: pointer;
+}
+
+#close-carrito:hover {
+  color: #e03e3e;
 }
 
 /* Sección de productos */
 .carrito-items {
-  flex: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Separación entre productos */
   overflow-y: auto;
+  padding-right: 10px; /* Espacio para el scroll */
+}
+
+.producto-carrito {
+  display: grid;
+  grid-template-columns: 50px 1fr auto auto; /* Imagen, detalles, cantidad/precio, botón */
+  align-items: center;
+  gap: 10px;
   padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.producto-carrito .imagen-carrito {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.div-nombre-tipo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.div-nombre-tipo .nombreParrafo {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+.div-nombre-tipo p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.cantidad-precio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.9px;
+}
+.cantidad-precio .cantidadParrafo {
+  margin-bottom: 0px;
+  font-size: 0.9rem;
+  color: #333;
+}
+.cantidad-precio .precioTotalParrafo {
+  margin-bottom: 0px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Estilo específico para el botón de eliminar */
+.eliminar-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.eliminar-btn:hover {
+  background-color: #e03e3e;
+  transform: scale(1.1);
+}
+
+.precioFinal {
+  border-top: 1px solid #e0e0e0;
+  padding: 10px 0;
+  margin-top: 10px;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 /* Footer del carrito */
-.carrito-footer {
-  padding: 10px;
-  border-top: 1px solid #ddd;
+.botonFinalizarContenedor {
+  text-align: center;
+  margin-top: 15px;
 }
 
 .checkout-btn {
-  width: 100%;
-  padding: 10px;
-  background: #8b0000;
-  color: #fff;
+  background-color: #4caf50;
+  color: white;
   border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #43a047;
 }
 
 .boton-desactivado {
