@@ -144,6 +144,11 @@ function cargarCarritoDeLocalStorage() {
     const carritoGuardado = localStorage.getItem("carrito"); // Obtenemos el carrito del Local Storage
     if (carritoGuardado) {
         carrito = JSON.parse(carritoGuardado); // Convertimos el string de vuelta a un objeto
+        if (carrito.length === 0) {
+            // Si el carrito está vacío, no hacemos nada
+            return;
+        }
+        finalizarCompra();
         mostrarCarrito(); // Mostramos el carrito recuperado
     }
 }
@@ -160,7 +165,6 @@ class Producto {
         
     }
 }
-
 
 // AGREGAR LOS PRODUCTOS SELECCIONADOS POR EL USUSARIO AL CARRITO
 function agregarProducto(producto) {
@@ -294,25 +298,21 @@ function eliminarProducto(index) {
 
 // FUNCION FINALIZAR COMPRA
 function finalizarCompra() {
-    if (carrito.length > 0) {
-        // Vaciar el carrito
-        carrito = [];
+   // Vaciar el carrito en el localStorage
+localStorage.removeItem("carrito");
+    
+// Vaciar el carrito en la variable global
+carrito = [];
 
-        // Limpiar el carrito en LocalStorage
-        localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito vacío en LocalStorage
+// Limpiar el contenido visual del carrito en el DOM
+const cartDetails = document.getElementById("cartDetails");
+cartDetails.innerHTML = ''; // Limpiar el contenido visual
 
-              // Mostrar el mensaje de agradecimiento
-              const contenedorCarrito = document.querySelector('.carrito-items');
-              contenedorCarrito.innerHTML = `<h2>¡Gracias por tu compra!</h2><p>Tu compra ha sido exitosa.</p>`;
-      
-              // Actualizar la vista del carrito (vaciar el carrito visualmente)
-              mostrarCarrito();  // Esta función debería mostrar el carrito vacío ahora
-              actualizarCarrito();  // Actualiza el contador de productos en el carrito (debe mostrar 0)
-              actualizarEstadoBotonPagar();  // Actualiza el estado del botón de pago (debe estar deshabilitado)
-    } else {
-        Swal.fire('El carrito está vacío', 'Agrega productos antes de finalizar la compra.', 'warning');
-    }
+// Actualizar el total y la cantidad en la interfaz
+document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $0`;
+document.getElementById("cantidadCarrito").innerHTML = '0';
 }
+
 
 function actualizarCarrito(){
     const cantidadElemento = document.getElementById("cantidadCarrito");
