@@ -140,87 +140,6 @@
   transform: scale(1.1);
 }
 
-.btn-radius {
-  border-radius: 50%;
-  width: 1.5rem; /* Ajusta el ancho y alto */
-  height: 1.5rem;
-  padding: 0; /* Para evitar que el texto afecte el tamaño */
-  display: inline-flex; /* Centrar el texto dentro del botón */
-}
-
-.playfair-display-title {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: 700; /* Negrita */
-  font-style: normal;
-}
-
-.playfair-display-body {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /* Normal */
-  font-style: normal;
-}
-
-.containerForm {
-  background-color: beige;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Espacio entre los dos div */
-  padding: 20px;
-}
-
-.box {
-  width: 40%;
-  height: 400px; /* Altura de los div */
-}
-
-.box1 {
-  background-color: #010203;
-}
-.box1 h2 {
-  text-align: center;
-  color: white;
-  padding-top: 1rem;
-}
-.box1 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
-}
-.box1 form label {
-  color: white;
-  text-align: center;
-}
-.box1 form input {
-  width: 100%;
-  text-align: center;
-  margin: 0.5rem 0;
-}
-
-.box2 {
-  font-size: 1.2rem;
-  color: #333;
-  text-align: center;
-  margin-bottom: 10px;
-}
-.box2 #botonFinalizarCompra {
-  background-color: #8b0000;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
-}
-.box2 #botonFinalizarCompra:hover {
-  background-color: #3b0d0d;
-}
-
 /* Estilos para cada producto en el carrito */
 .producto-carrito {
   display: flex;
@@ -229,6 +148,10 @@
   padding: 5px 0;
   border-bottom: 1px solid #ddd;
   font-size: 0.9rem;
+}
+.producto-carrito .imagen-carrito {
+  width: 3rem;
+  height: 3rem;
 }
 
 /* Estilo para los párrafos dentro del producto */
@@ -250,7 +173,7 @@
   position: fixed;
   top: 0;
   right: -100%; /* Fuera de la pantalla */
-  width: 300px;
+  width: 30rem;
   height: 100%;
   background: #fff;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);

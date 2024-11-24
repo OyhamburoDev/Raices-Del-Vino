@@ -2,14 +2,14 @@
 
 // ARRAY DE PRODUCTOS.
 const productos = [
-    { nombre: "Catena Zapata", tipo: "Vino Tinto", precio: 5000, imagen: "./images/botella-vino-tinto-uno.jpg" },
-    { nombre: "Bodega Norton", tipo: "Vino Tinto", precio: 5000, imagen: "./images/botella-vino-tinto-dos.jpg" },
-    { nombre: "Bodega Luigi Bosca", tipo: "Vino Blanco", precio: 4000, imagen: "./images/botella-vino-blanco-uno.jpg" },
-    { nombre: "Bodega Zuccardi", tipo: "Vino Blanco", precio: 4000, imagen: "./images/botella-vino-blanco-dos.jpg" },
-    { nombre: "Bodega Susana Balbo", tipo: "Vino Rosado", precio: 4500, imagen: "./images/botella-vino-rosado-uno.jpg" },
-    { nombre: "Bodega Chandon", tipo: "Vino Rosado", precio: 4500, imagen: "./images/botella-vino-rosado-dos.jpg" },
-    { nombre: "Sacacorchos", tipo: "Accesorio", precio: 2000, imagen: "./images/accesorio-uno.jpg" },
-    { nombre: "Ver Más", tipo: "Opción", precio: null, imagen: "./images/ver-mas.png" },
+    { nombre: "Catena Zapata", tipo: "Vino Tinto", precio: 5000, imagen: "/images/botella-vino-tinto-uno.jpg" },
+    { nombre: "Bodega Norton", tipo: "Vino Tinto", precio: 5000, imagen: "/images/botella-vino-tinto-dos.jpg" },
+    { nombre: "Bodega Luigi Bosca", tipo: "Vino Blanco", precio: 4000, imagen: "/images/botella-vino-blanco-uno.jpg" },
+    { nombre: "Bodega Zuccardi", tipo: "Vino Blanco", precio: 4000, imagen: "/images/botella-vino-blanco-dos.jpg" },
+    { nombre: "Bodega Susana Balbo", tipo: "Vino Rosado", precio: 4500, imagen: "/images/botella-vino-rosado-uno.jpg" },
+    { nombre: "Bodega Chandon", tipo: "Vino Rosado", precio: 4500, imagen: "/images/botella-vino-rosado-dos.jpg" },
+    { nombre: "Sacacorchos", tipo: "Accesorio", precio: 2000, imagen: "/images/accesorio-uno.jpg" },
+    { nombre: "Ver Más", tipo: "Opción", precio: null, imagen: "/images/ver-mas.png" },
 ]
 
 
@@ -59,7 +59,7 @@ function generarCards(){
     tipo.classList.add("card-text");
     tipo.textContent = producto.tipo;
 
-    // Creamos un div para el precio
+    // Creamos un div para el precio, input y button
     const divPrecio = document.createElement("div");
     divPrecio.classList.add("divPrecio");
 
@@ -67,10 +67,6 @@ function generarCards(){
     const precio = document.createElement("p");
     precio.classList.add("card-precio");
     precio.textContent = `$${producto.precio}`;
-
-    //  // Crear el input de cantidad y el botón
-    //  const labelCantidad = document.createElement("label");
-    //  labelCantidad.textContent = "Cantidad:";
 
     // creamos otro div para el input y el button
     const divInputButton = document.createElement("div");
@@ -103,7 +99,6 @@ cardBody.appendChild(titulo);
 cardBody.appendChild(tipo);
 cardBody.appendChild(divPrecio);
 divPrecio.appendChild(precio);
-// cardBody.appendChild(labelCantidad);
 divPrecio.appendChild(divInputButton);
 divInputButton.appendChild(inputCantidad);
 divInputButton.appendChild(btnAgregar);
@@ -111,10 +106,12 @@ divInputButton.appendChild(btnAgregar);
 btnAgregar.addEventListener("click", function (e) {
     e.preventDefault();  // Evita la acción por defecto del enlace
     const cantidad = parseInt(inputCantidad.value);  // Obtener la cantidad seleccionada por el usuario
-    const productoAgregado = new Producto(producto.nombre, producto.tipo, producto.precio, cantidad);  // Crear el objeto Producto
+    const productoAgregado = new Producto(producto.nombre, producto.tipo, producto.precio, cantidad, producto.imagen);  // Crear el objeto Producto
     agregarProducto(productoAgregado);  // Llamar a la función para agregar el producto al carrito
 });
 }
+
+
 
 // Agregar la columna a la fila
 fila.appendChild(cardCol);
@@ -124,9 +121,6 @@ cardCol.appendChild(card);
 }
 
 generarCards();
-
-
-
 
 
 
@@ -156,11 +150,14 @@ function cargarCarritoDeLocalStorage() {
 
 // CLASE CONSTRUCTORA PARA ARMAR LOS OBJETOS DEL CARRITO
 class Producto {
-    constructor(nombre, tipoDeVino, precio, cantidad) {
+    constructor(nombre, tipoDeVino, precio, cantidad, imagen) {
+        
         this.nombre = nombre;
         this.tipoDeVino = tipoDeVino;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.imagen = imagen;  // Esta propiedad es necesaria para almacenar la imagen
+        
     }
 }
 
@@ -200,7 +197,14 @@ function mostrarCarrito() {
         productoDiv.classList.add("producto-carrito");
         productoDiv.style.opacity = 0; // Animación de entrada
 
-        // Crear elementos para cada parte del producto
+        
+       // Crear elementos para cada parte del producto
+       const imagenParrafo = document.createElement("img");
+       imagenParrafo.classList.add("imagen-carrito");
+       imagenParrafo.src = producto.imagen; // Mostrar la imagen del producto
+       imagenParrafo.alt = producto.nombre;
+
+
         const nombreParrafo = document.createElement("p");
         nombreParrafo.innerHTML = `<strong>Nombre:</strong> ${producto.nombre} - ${producto.tipoDeVino}`;
 
@@ -222,6 +226,7 @@ function mostrarCarrito() {
         });
 
         // Agregar todo al div del producto
+        productoDiv.appendChild(imagenParrafo);
         productoDiv.appendChild(nombreParrafo);
         productoDiv.appendChild(cantidadParrafo);
         productoDiv.appendChild(precioTotalParrafo);
@@ -241,37 +246,9 @@ function mostrarCarrito() {
 
     document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $${total}`;
     
-    // // crear boton de ir a pagar
-    // const botonFinalizar = document.createElement("button");
-    // botonFinalizar.id = "botonFinalizarCompra"; // le asignamos un id
-    // botonFinalizar.textContent = "Proceder al pago"; // le asignamos un texto dentro del botón.
-    // botonFinalizar.classList.add("checkout-btn");
-
-   
-//   // Añadir el evento de finalizar compra
-//     botonFinalizar.addEventListener("click", function() {
-//         finalizarCompra(); // Llamar a la función de finalizar compra
-//     });
-
-  //Añadimos el botón al contenedor si el array carrito esta lleno
-  
-//   const contenedorBotonFinalizar = document.querySelector(".botonFinalizarContenedor");
-//   contenedorBotonFinalizar.innerHTML = '';
-//   contenedorBotonFinalizar.appendChild(botonFinalizar);   
-  
-//   actualizarEstadoBotonFinalizar(); // Llamamos para que el botón esté actualizado cada vez que se muestra el carrito
 }
 
-// // Función que verifica si el formulario está completo
-// function formularioCompleto() {
-//     const nombre = document.getElementById("name").value;
-//     const email = document.getElementById("email").value;
-//     const telefono = document.getElementById("phone").value;
-//     const direccion = document.getElementById("address").value;
 
-//     // Verificamos si ambos campos tienen valor
-//     return nombre !== "" && email !== "" && telefono !== "" && direccion !== "" ;
-// }
 
 // ELIMINAR LOS PRODUCTOS SELECCIONADOS DEL CARRITO
 function eliminarProducto(index) {
@@ -344,60 +321,39 @@ function actualizarEstadoBotonPagar(){
 
 actualizarEstadoBotonPagar()
 
-botonPagar.addEventListener('click', () => {
-    // Lanza el modal de SweetAlert2
+document
+  .getElementById("btn-ir-a-pagar")
+  .addEventListener("click", function () {
     Swal.fire({
-      title: 'Completa tu información',
+      title: "Formulario de Pago",
       html: `
-        <form id="formularioPago">
-          <input type="text" id="nombre" class="swal2-input" placeholder="Nombre" required>
-          <input type="email" id="email" class="swal2-input" placeholder="Correo electrónico" required>
-          <input type="text" id="direccion" class="swal2-input" placeholder="Dirección" required>
-        </form>
+        <input type="text" id="nombre" class="swal2-input" placeholder="Nombre" required />
+        <input type="text" id="direccion" class="swal2-input" placeholder="Dirección" required />
+        <input type="text" id="tarjeta" class="swal2-input" placeholder="Número de tarjeta" required />
       `,
-      showCancelButton: true,
-      confirmButtonText: 'Pagar',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: "Pagar",
       preConfirm: () => {
-        // Usamos setTimeout para asegurarnos de que los inputs estén disponibles
-        setTimeout(() => {
-          const nombre = document.getElementById('nombre');
-          const email = document.getElementById('email');
-          const direccion = document.getElementById('direccion');
-  
-          // Comprobamos si los elementos existen
-          if (!nombre || !email || !direccion) {
-            console.error('No se encontraron los elementos del formulario');
-            return Swal.showValidationMessage('Por favor completa todos los campos');
-          }
-  
-          // Obtener los valores de los inputs
-          const nombreValue = nombre.value;
-          const emailValue = email.value;
-          const direccionValue = direccion.value;
-  
-          // Mostrar los valores para depuración
-          console.log('Nombre:', nombreValue);
-          console.log('Email:', emailValue);
-          console.log('Dirección:', direccionValue);
-  
-          // Verificar si algún campo está vacío
-          if (!nombreValue || !emailValue || !direccionValue) {
-            Swal.showValidationMessage('Por favor completa todos los campos');
-            return false;
-          }
-  
-          // Si todo está bien, devolver los valores
-          return { nombre: nombreValue, email: emailValue, direccion: direccionValue };
-        }, 100); // Dar tiempo para que SweetAlert renderice los inputs
-      }
+        const nombre = document.getElementById("nombre")?.value.trim();
+        const direccion = document.getElementById("direccion")?.value.trim();
+        const tarjeta = document.getElementById("tarjeta")?.value.trim();
+
+        // Validación después de intentar enviar los datos
+        if (!nombre || !direccion || !tarjeta) {
+          Swal.showValidationMessage("Por favor, llena todos los campos");
+          return false;  // No se puede enviar el formulario si hay campos vacíos
+        }
+
+        // Si la validación pasa, retornar los valores
+        return { nombre, direccion, tarjeta };
+      },
     }).then((result) => {
-      if (result.isConfirmed) {
-        console.log('Datos del formulario:', result.value);
-        Swal.fire('¡Gracias por tu compra!', '', 'success');
+      if (result.isConfirmed && result.value) {
+        Swal.fire("¡Pago exitoso!", "Gracias por tu compra", "success");
       }
     });
   });
+
+
 
 // GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
