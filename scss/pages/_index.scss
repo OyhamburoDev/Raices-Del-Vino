@@ -105,7 +105,7 @@
 .card-precio{
   font-size: 1.1rem;
   font-weight: bold;
-  color: #d9534f;
+  color: #9b1e1e;
 }
 
 .divInputButton {
@@ -322,7 +322,7 @@ h2{
 }
 
 .checkout-btn{
-  background-color: #4caf50;
+  background-color: #388e3c;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -340,4 +340,64 @@ h2{
   background-color: #ccc;
   color: #666;
   cursor: not-allowed;
+}
+
+/* Modal personalizado */
+.swal2-popup-custom {
+  border-radius: 15px;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.swal2-confirm-custom {
+  background-color: #388e3c !important;
+  color: white !important;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.swal2-cancel-custom {
+  background-color: #616161 !important;
+  color: white !important;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Estilo de formulario */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.form-group i {
+  font-size: 18px;
+  color: #000000;
+}
+
+.form-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #b62a5d;
+  box-shadow: 0 0 5px #b62a5d;
+}
+
+.custom-confirm-button {
+  background-color: #9b1e1e !important; /* Color rojo vino */
+  color: white !important; /* Color del texto blanco */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 20px; /* Relleno para hacerlo más grande */
+  font-size: 16px; /* Tamaño de la fuente */
+  border: none; /* Sin borde */
+}
+
+.custom-confirm-button:hover {
+  background-color: #7a1616 !important; /* Color de fondo cuando el mouse pasa por encima */
 }

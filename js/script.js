@@ -182,8 +182,11 @@ function agregarProducto(producto) {
         title: '¡Producto agregado!',
         text: `${producto.nombre} ha sido añadido al carrito.`,
         icon: 'success',
-        confirmButtonText: 'OK'
-    });
+        confirmButtonText: 'OK',
+         customClass: {
+        confirmButton: 'custom-confirm-button'
+    }
+});
 }
 
 // MOSTRAR LOS PRODUCTOS EN EL CARRITO
@@ -295,7 +298,10 @@ function eliminarProducto(index) {
     title: 'Producto eliminado',
     text: `${productoEliminado} fue eliminado del carrito.`,
     icon: 'warning',
-    confirmButtonText: 'OK'
+    confirmButtonText: 'OK',
+     customClass: {
+        confirmButton: 'custom-confirm-button'
+     }
 });
 }
 
@@ -348,42 +354,83 @@ function actualizarEstadoBotonPagar(){
 
 actualizarEstadoBotonPagar()
 
-function funcionFinal(){
-document
-  .getElementById("btn-ir-a-pagar")
-  .addEventListener("click", function () {
-    Swal.fire({
-      title: "Formulario de Pago",
-      html: `
-        <input type="text" id="nombre" class="swal2-input" placeholder="Nombre" required />
-        <input type="text" id="direccion" class="swal2-input" placeholder="Dirección" required />
-        <input type="text" id="tarjeta" class="swal2-input" placeholder="Número de tarjeta" required />
-      `,
-      confirmButtonText: "Pagar",
-      preConfirm: () => {
-        const nombre = document.getElementById("nombre")?.value.trim();
-        const direccion = document.getElementById("direccion")?.value.trim();
-        const tarjeta = document.getElementById("tarjeta")?.value.trim();
-
-        // Validación después de intentar enviar los datos
-        if (!nombre || !direccion || !tarjeta) {
-          Swal.showValidationMessage("Por favor, llena todos los campos");
-          return false;  // No se puede enviar el formulario si hay campos vacíos
-        }
-
-        // Si la validación pasa, retornar los valores
-        return { nombre, direccion, tarjeta };
-      },
-    }).then((result) => {
-      if (result.isConfirmed && result.value) {
-        Swal.fire("¡Pago exitoso!", "Gracias por tu compra", "success");
-        finalizarCompra()
-      }
-    });
-  });
-}
-
-funcionFinal();
+function funcionFinal() {
+    document
+      .getElementById("btn-ir-a-pagar")
+      .addEventListener("click", function () {
+        Swal.fire({
+          title: '<span style="color:#000000;">Formulario de Pago</span>',
+          html: `
+            <div class="form-group">
+              <i class="fas fa-user"></i>
+              <input type="text" id="nombre" class="form-input" placeholder="Nombre completo" required />
+            </div>
+            <div class="form-group">
+              <i class="fas fa-map-marker-alt"></i>
+              <input type="text" id="direccion" class="form-input" placeholder="Dirección de envío" required />
+            </div>
+            <div class="form-group">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="email" class="form-input" placeholder="Correo electrónico" required>
+            </div>
+            <div class="form-group">
+              <i class="fas fa-credit-card"></i>
+              <input type="text" id="tarjeta" class="form-input" placeholder="Número de tarjeta" maxlength="16" required />
+            </div>
+              <div class="form-group">
+              <i class="fas fa-calendar-alt"></i>
+              <input type="month" class="form-input" id="expiration" required>
+            </div>
+            <div class="form-group">
+              <i class="fas fa-lock"></i>
+              <input type="text" id="cvv" class="form-input" placeholder="CVV" maxlength="3" required>
+            </div>
+          `,
+          confirmButtonText: "Pagar",
+          showCancelButton: true,
+          cancelButtonText: "Cancelar",
+          customClass: {
+            popup: 'swal2-popup-custom',
+            confirmButton: 'swal2-confirm-custom',
+            cancelButton: 'swal2-cancel-custom',
+          },
+          preConfirm: () => {
+            const nombre = document.getElementById("nombre")?.value.trim();
+            const direccion = document.getElementById("direccion")?.value.trim();
+            // const email = document.getElementById("email").value;
+            const tarjeta = document.getElementById("tarjeta")?.value.trim();
+            const expiration = document.getElementById("expiration").value;
+            const cvv = document.getElementById("cvv").value;
+  
+            if (!nombre || !direccion ||
+                 !tarjeta|| !expiration ||
+                !cvv) {
+              Swal.showValidationMessage("Por favor, completa todos los campos.");
+              return false;
+            }
+  
+            return { nombre, direccion, tarjeta, expiration, cvv };
+          },
+        }).then((result) => {
+            if (result.isConfirmed) {
+              // Aquí agregamos el Swal para mostrar el mensaje de éxito
+              Swal.fire({
+                title: '¡Pago exitoso!',
+                text: 'Gracias por tu compra',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                customClass: {
+                  confirmButton: 'custom-confirm-button', // Aplica la clase personalizada
+                }
+              }).then(() => {
+                finalizarCompra();
+              });
+            }
+          });
+        });
+    }
+    
+    funcionFinal();
 
 // GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
@@ -406,3 +453,4 @@ carritoIcono.addEventListener('click', () => {
 carritoBotonCerrar.addEventListener('click', () => {
     carritoSidebar.classList.remove('active');
 });
+
