@@ -2,14 +2,14 @@
 
 // ARRAY DE PRODUCTOS.
 const productos = [
-    { nombre: "Catena Zapata", tipo: "Vino Tinto", precio: 5000, imagen: "/images/botella-vino-tinto-uno.jpg" },
-    { nombre: "Bodega Norton", tipo: "Vino Tinto", precio: 5000, imagen: "/images/botella-vino-tinto-dos.jpg" },
-    { nombre: "Bodega Luigi Bosca", tipo: "Vino Blanco", precio: 4000, imagen: "/images/botella-vino-blanco-uno.jpg" },
-    { nombre: "Bodega Zuccardi", tipo: "Vino Blanco", precio: 4000, imagen: "/images/botella-vino-blanco-dos.jpg" },
-    { nombre: "Bodega Susana Balbo", tipo: "Vino Rosado", precio: 4500, imagen: "/images/botella-vino-rosado-uno.jpg" },
-    { nombre: "Bodega Chandon", tipo: "Vino Rosado", precio: 4500, imagen: "/images/botella-vino-rosado-dos.jpg" },
-    { nombre: "Sacacorchos", tipo: "Accesorio", precio: 2000, imagen: "/images/accesorio-uno.jpg" },
-    { nombre: "Ver Más", tipo: "Opción", precio: null, imagen: "/images/ver-mas.png" },
+    { nombre: "Catena Zapata", tipo: "Vino Tinto", precio: 5000, imagen: "./images/botella-vino-tinto-uno.jpg" },
+    { nombre: "Bodega Norton", tipo: "Vino Tinto", precio: 5000, imagen: "./images/botella-vino-tinto-dos.jpg" },
+    { nombre: "Bodega Luigi Bosca", tipo: "Vino Blanco", precio: 4000, imagen: "./images/botella-vino-blanco-uno.jpg" },
+    { nombre: "Bodega Zuccardi", tipo: "Vino Blanco", precio: 4000, imagen: "./images/botella-vino-blanco-dos.jpg" },
+    { nombre: "Bodega Susana Balbo", tipo: "Vino Rosado", precio: 4500, imagen: "./images/botella-vino-rosado-uno.jpg" },
+    { nombre: "Bodega Chandon", tipo: "Vino Rosado", precio: 4500, imagen: "./images/botella-vino-rosado-dos.jpg" },
+    { nombre: "Sacacorchos", tipo: "Accesorio", precio: 2000, imagen: "./images/accesorio-uno.jpg" },
+    { nombre: "Ver Más", tipo: "Opción", precio: null, imagen: "./images/ver-mas.png" },
 ]
 
 
