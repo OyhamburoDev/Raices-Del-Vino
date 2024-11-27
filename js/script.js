@@ -454,3 +454,8 @@ carritoBotonCerrar.addEventListener('click', () => {
     carritoSidebar.classList.remove('active');
 });
 
+
+
+
+
+//  AQUI COMIENZA LA FUNCION DEL BUSCADOR

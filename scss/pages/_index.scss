@@ -11,6 +11,29 @@
     height: 5rem;
   }
 
+  #buscador {
+    border: none;
+    border-bottom: 2px solid black; /* Línea inferior negra */
+    outline: none; /* Quitar borde azul al hacer clic */
+    background: transparent; /* Fondo transparente */
+    font-size: 18px; /* Tamaño del texto */
+    padding: 5px 10px; /* Espaciado interno */
+    width: 10rem; /* Ancho del input */
+    text-align: left; /* Texto alineado a la izquierda */
+    transition: border-color 0.3s ease; /* Animación suave al enfocarse */
+}
+
+/* Placeholder personalizado */
+#buscador::placeholder {
+    color: #aaa; /* Color del texto de marcador */
+    font-style: italic; /* Estilo cursivo */
+}
+
+/* Efecto al enfocarse */
+#buscador:focus {
+    border-bottom: 2px solid #5C1A45; /* Línea inferior cambia a rojo vino */
+}
+
 
   .carrito-container {
     position: relative; // Define este contenedor como base para la posición absoluta
