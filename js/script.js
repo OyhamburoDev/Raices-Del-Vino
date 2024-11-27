@@ -13,116 +13,144 @@ const productos = [
 ]
 
 
+// Filtrados globales
+let filtrados = productos;  // Inicializamos la variable filtrados con todos los productos
+
 // FUNCIÓN PARA GENERAR LAS CARDS EN EL INDEX CON CLASES DE BOOTSTRAP
-function generarCards(){
-  const contenedor = document.querySelector(".container");  // ---> este es el container principal
+function generarCards() {
+    const contenedor = document.querySelector(".container");  // ---> este es el container principal
+    contenedor.innerHTML = "";  // Limpiamos el contenedor antes de agregar las nuevas cards
 
-  productos.forEach((producto, index)=>{
-  // creamos una fila cada 4 cards, para una mejor visualizacion en desktop
-    if(index % 4 === 0){
-        fila = document.createElement("div");
-        fila.classList.add("row", "justify-content-center");
-        contenedor.appendChild(fila);
-    }
+    filtrados.forEach((producto, index) => {
+        // creamos una fila cada 4 cards, para una mejor visualización en desktop
+        if (index % 4 === 0) {
+            fila = document.createElement("div");
+            fila.classList.add("row", "justify-content-center");
+            contenedor.appendChild(fila);
+        }
 
-    // creamos la columma de la card
-    const cardCol = document.createElement("div");
-    cardCol.classList.add("col-6", "col-lg-2", "mb-4");
-    
-    // creamos el div de la card
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.style.width = "100%";
+        // creamos la columna de la card
+        const cardCol = document.createElement("div");
+        cardCol.classList.add("col-6", "col-lg-2", "mb-4");
 
-    // Creamos la imagen
-    const img = document.createElement("img");
-    img.src = producto.imagen;
-    img.alt = producto.nombre;
-    img.classList.add("card-img-top");
+        // creamos el div de la card
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.style.width = "100%";
+
+        // Creamos la imagen
+        const img = document.createElement("img");
+        img.src = producto.imagen;
+        img.alt = producto.nombre;
+        img.classList.add("card-img-top");
 
         // Si es el último producto (la opción "Ver Más"), solo agregamos la imagen
         if (index === productos.length - 1) {
             card.appendChild(img); // Solo agregar la imagen
-          } else {
+        } else {
             // Si no es el último, agregamos los elementos habituales
-    // creamos otro div para contener título, parrafo, precio, cantidad y botón
-    const cardBody = document.createElement("div");
-    cardBody.classList.add("card-body");
+            // creamos otro div para contener título, párrafo, precio, cantidad y botón
+            const cardBody = document.createElement("div");
+            cardBody.classList.add("card-body");
 
-    // títutlo
-    const titulo = document.createElement("h5");
-    titulo.classList.add("card-title");
-    titulo.textContent = producto.nombre;
+            // Título
+            const titulo = document.createElement("h5");
+            titulo.classList.add("card-title");
+            titulo.textContent = producto.nombre;
 
-    // Tipo de vino.
-    const tipo = document.createElement("p");
-    tipo.classList.add("card-text");
-    tipo.textContent = producto.tipo;
+            // Tipo de vino
+            const tipo = document.createElement("p");
+            tipo.classList.add("card-text");
+            tipo.textContent = producto.tipo;
 
-    // Creamos un div para el precio, input y button
-    const divPrecio = document.createElement("div");
-    divPrecio.classList.add("divPrecio");
+            // Creamos un div para el precio, input y botón
+            const divPrecio = document.createElement("div");
+            divPrecio.classList.add("divPrecio");
 
-    // Precio
-    const precio = document.createElement("p");
-    precio.classList.add("card-precio");
-    precio.textContent = `$${producto.precio}`;
+            // Precio
+            const precio = document.createElement("p");
+            precio.classList.add("card-precio");
+            precio.textContent = `$${producto.precio}`;
 
-    // creamos otro div para el input y el button
-    const divInputButton = document.createElement("div");
-    divInputButton.classList.add("divInputButton");
+            // creamos otro div para el input y el button
+            const divInputButton = document.createElement("div");
+            divInputButton.classList.add("divInputButton");
 
+            const inputCantidad = document.createElement("input");
+            inputCantidad.classList.add("cantidad-input")
+            inputCantidad.type = "number";
+            inputCantidad.id = "cantidad";
+            inputCantidad.name = "cantidad";
+            inputCantidad.min = "1";
+            inputCantidad.value = "1";
 
-     const inputCantidad = document.createElement("input");
-     inputCantidad.classList.add("cantidad-input")
-     inputCantidad.type = "number";
-     inputCantidad.id = "cantidad";
-     inputCantidad.name = "cantidad";
-     inputCantidad.min = "1";
-     inputCantidad.value = "1";
+            // Crear el botón con el icono de Font Awesome dentro
+            const btnAgregar = document.createElement("button");
+            btnAgregar.classList.add("card-modern-btn"); // Aplica la clase del botón de la card moderna
 
-      // Crear el botón con el icono de Font Awesome dentro
-      const btnAgregar = document.createElement("button");
-      btnAgregar.classList.add("card-modern-btn"); // Aplica la clase del botón de la card moderna
+            // Crear el icono de Font Awesome
+            const icono = document.createElement("i");
+            icono.classList.add("fas", "fa-plus"); // Aplica el icono de suma de Font Awesome
 
-      // Crear el icono de Font Awesome
-      const icono = document.createElement("i");
-      icono.classList.add("fas", "fa-plus"); // Aplica el icono de suma de Font Awesome
+            // Agregar el icono al botón
+            btnAgregar.appendChild(icono);
 
-      // Agregar el icono al botón
-      btnAgregar.appendChild(icono);
+            // Agregar los elementos creados a la card
+            card.appendChild(img); // Le agregamos la imagen
+            card.appendChild(cardBody); // Le agregamos el div que engloba los elementos que faltan
+            cardBody.appendChild(titulo);
+            cardBody.appendChild(tipo);
+            cardBody.appendChild(divPrecio);
+            divPrecio.appendChild(precio);
+            divPrecio.appendChild(divInputButton);
+            divInputButton.appendChild(inputCantidad);
+            divInputButton.appendChild(btnAgregar);
 
-// Agregar los elementos creados a la card
-card.appendChild(img); // Le agregamos la imagen
-card.appendChild(cardBody); // Le agregamos el div que engloba los elementos que faltan
-cardBody.appendChild(titulo);
-cardBody.appendChild(tipo);
-cardBody.appendChild(divPrecio);
-divPrecio.appendChild(precio);
-divPrecio.appendChild(divInputButton);
-divInputButton.appendChild(inputCantidad);
-divInputButton.appendChild(btnAgregar);
+            btnAgregar.addEventListener("click", function (e) {
+                e.preventDefault();  // Evita la acción por defecto del enlace
+                const cantidad = parseInt(inputCantidad.value);  // Obtener la cantidad seleccionada por el usuario
+                const productoAgregado = new Producto(producto.nombre, producto.tipo, producto.precio, cantidad, producto.imagen);  // Crear el objeto Producto
+                agregarProducto(productoAgregado);  // Llamar a la función para agregar el producto al carrito
+            });
+        }
 
-btnAgregar.addEventListener("click", function (e) {
-    e.preventDefault();  // Evita la acción por defecto del enlace
-    const cantidad = parseInt(inputCantidad.value);  // Obtener la cantidad seleccionada por el usuario
-    const productoAgregado = new Producto(producto.nombre, producto.tipo, producto.precio, cantidad, producto.imagen);  // Crear el objeto Producto
-    agregarProducto(productoAgregado);  // Llamar a la función para agregar el producto al carrito
-});
+        // Agregar la columna a la fila
+        fila.appendChild(cardCol);
+        // Agregar la card a la columna
+        cardCol.appendChild(card);
+    });
 }
 
-
-
-// Agregar la columna a la fila
-fila.appendChild(cardCol);
-// Agregar la card a la columna
-cardCol.appendChild(card);
-});
-}
-
+// Llamamos a generarCards inicialmente con los productos completos
 generarCards();
 
+// Definimos la función para buscar productos
+function buscarProductos(textoBusqueda, productos) {
+    // Convertimos el texto de búsqueda a minúsculas para hacer la búsqueda insensible a mayúsculas
+    const texto = textoBusqueda.toLowerCase();
 
+    // Filtramos los productos que coinciden con el texto de búsqueda
+    const filtrados = productos.filter(producto =>
+        producto.nombre.toLowerCase().includes(texto) ||
+        producto.tipo.toLowerCase().includes(texto)
+    );
+
+    // Devolvemos el array de productos filtrados
+    return filtrados;
+}
+
+// Evento para escuchar cuando el usuario escribe en el campo de búsqueda
+const seleccionarInput = document.getElementById('buscador');
+seleccionarInput.addEventListener("input", function() {
+    // Obtenemos el valor del campo de búsqueda
+    const textoBusqueda = seleccionarInput.value;
+
+    // Llamamos a la función que filtra los productos
+    filtrados = buscarProductos(textoBusqueda, productos);  // Actualizamos la variable filtrados
+
+    // Limpiamos el contenedor antes de agregar las nuevas cards filtradas
+    generarCards();  // Volver a generar las cards con los productos filtrados
+});
 
 
 
