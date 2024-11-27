@@ -134,6 +134,7 @@ generarCards();
 // INICIALIZAMOS EL CARRITO COMO UN ARRAY VACIO
 let carrito = []; 
 
+
 // CARGAR EL CARRITO DESDE LOCAL STORAGE CUANDO LA PÁGINA SE CARGA Y MOSTRARLO EN LA PÁGINA
 window.onload = function() {
     cargarCarritoDeLocalStorage(); 
@@ -142,14 +143,17 @@ window.onload = function() {
 // OBTENER EL CARRITO DE LOCAL STORAGE  recupera y muestra los datos guardados.
 function cargarCarritoDeLocalStorage() {
     const carritoGuardado = localStorage.getItem("carrito"); // Obtenemos el carrito del Local Storage
+    console.log("Carrito cargado:", carritoGuardado);
     if (carritoGuardado) {
         carrito = JSON.parse(carritoGuardado); // Convertimos el string de vuelta a un objeto
         if (carrito.length === 0) {
             // Si el carrito está vacío, no hacemos nada
             return;
         }
-        finalizarCompra();
+        
         mostrarCarrito(); // Mostramos el carrito recuperado
+        actualizarEstadoBotonPagar();
+        actualizarCarrito();
     }
 }
 
@@ -303,16 +307,18 @@ localStorage.removeItem("carrito");
     
 // Vaciar el carrito en la variable global
 carrito = [];
+   // Vaciar el carrito en el localStorage
+   localStorage.removeItem("carrito");
 
 // Limpiar el contenido visual del carrito en el DOM
 const cartDetails = document.getElementById("cartDetails");
-cartDetails.innerHTML = ''; // Limpiar el contenido visual
+cartDetails.innerHTML = 'Gracias por tu compra!'; // Limpiar el contenido visual
 
 // Actualizar el total y la cantidad en la interfaz
-document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $0`;
-document.getElementById("cantidadCarrito").innerHTML = '0';
+document.getElementById("precioTotal").innerHTML = ``;
+document.getElementById("cantidadCarrito").innerHTML = '';
+actualizarEstadoBotonPagar();
 }
-
 
 function actualizarCarrito(){
     const cantidadElemento = document.getElementById("cantidadCarrito");
@@ -323,8 +329,6 @@ function actualizarCarrito(){
     }else{
         cantidadElemento.style.display = `none`;
     }
-
-
 }
 
 // Selecciona el botón "Ir a pagar"
@@ -344,6 +348,7 @@ function actualizarEstadoBotonPagar(){
 
 actualizarEstadoBotonPagar()
 
+function funcionFinal(){
 document
   .getElementById("btn-ir-a-pagar")
   .addEventListener("click", function () {
@@ -372,14 +377,17 @@ document
     }).then((result) => {
       if (result.isConfirmed && result.value) {
         Swal.fire("¡Pago exitoso!", "Gracias por tu compra", "success");
+        finalizarCompra()
       }
     });
   });
+}
 
-
+funcionFinal();
 
 // GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
+    console.log("Guardando carrito:", carrito);
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito como texto JSON
 }
 
@@ -398,6 +406,3 @@ carritoIcono.addEventListener('click', () => {
 carritoBotonCerrar.addEventListener('click', () => {
     carritoSidebar.classList.remove('active');
 });
-
-
-
