@@ -1,15 +1,18 @@
 .bodyIndex {
     background-image: url(../images/wine-2853916_1920.jpg);
+    font-family: 'Playfair Display', serif; /* Aplica Playfair Display como fuente principal */
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
   }
    
   .logo-marca-index {
-    border-radius: 100%;
-    width: 5rem;
-    height: 5rem;
+    border-radius: 50%;
+    width: 7rem;
+    height: 7rem;
+    padding: 0px;
   }
+
 
   #buscador {
     border: none;

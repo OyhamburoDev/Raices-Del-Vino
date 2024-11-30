@@ -198,6 +198,19 @@ class Producto {
     }
 }
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top",
+  showConfirmButton: false,
+  timer: 1000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+
+
 // AGREGAR LOS PRODUCTOS SELECCIONADOS POR EL USUSARIO AL CARRITO
 function agregarProducto(producto) {
     carrito.push(producto); // Añadimos el producto al carrito
@@ -206,15 +219,10 @@ function agregarProducto(producto) {
     actualizarCarrito(); // Actualizar el contador del carrito
     actualizarEstadoBotonPagar();  // Actualizar estado del botón de pago
     // Notificación elegante
-    Swal.fire({
-        title: '¡Producto agregado!',
-        text: `${producto.nombre} ha sido añadido al carrito.`,
-        icon: 'success',
-        confirmButtonText: 'OK',
-         customClass: {
-        confirmButton: 'custom-confirm-button'
-    }
-});
+    Toast.fire({
+      icon: "success",
+      title: "Producto Agregado"
+    });
 }
 
 // MOSTRAR LOS PRODUCTOS EN EL CARRITO
@@ -322,14 +330,9 @@ function eliminarProducto(index) {
     actualizarEstadoBotonPagar();  // Actualizar estado del botón de pago
 
  // Notificación elegante
- Swal.fire({
-    title: 'Producto eliminado',
-    text: `${productoEliminado} fue eliminado del carrito.`,
-    icon: 'warning',
-    confirmButtonText: 'OK',
-     customClass: {
-        confirmButton: 'custom-confirm-button'
-     }
+ Toast.fire({
+  icon: "warning",
+  title: "Producto Eliminado"
 });
 }
 
@@ -486,4 +489,4 @@ carritoBotonCerrar.addEventListener('click', () => {
 
 
 
-//  AQUI COMIENZA LA FUNCION DEL BUSCADOR
+
