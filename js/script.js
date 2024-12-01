@@ -236,6 +236,7 @@ seleccionarInput.addEventListener("input", function() {
 
     // Limpiamos el contenedor antes de agregar las nuevas cards filtradas
     generarCards();  // Volver a generar las cards con los productos filtrados
+    traerLosDatos();
 });
 
 
