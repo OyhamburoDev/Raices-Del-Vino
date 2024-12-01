@@ -394,6 +394,68 @@
   background-color: #7a1616 !important; /* Color de fondo cuando el mouse pasa por encima */
 }
 
+.comentarios-modal {
+  font-family: "Arial", sans-serif;
+  padding: 15px; /* Reducir el padding */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Reducir sombra */
+  max-height: 70vh; /* Limitar la altura del modal */
+  position: relative;
+  overflow: hidden; /* Evitar que el contenido sobrepase los bordes */
+}
+
+/* Agregar sombra al pasar el mouse */
+.comentarios-modal:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.comentarios-title {
+  font-size: 1.2rem; /* Reducir el tamaño del título */
+  color: #8b0000;
+  margin-bottom: 10px; /* Reducir el margen */
+  font-weight: 600;
+  text-align: center;
+}
+
+.comentarios-content {
+  text-align: left;
+  color: #555;
+  max-height: 50vh; /* Limitar el área de los comentarios */
+  overflow-y: scroll; /* Permite el desplazamiento en los comentarios */
+  padding-right: 8px; /* Reducir margen a la derecha */
+}
+.comentarios-content img {
+  border-radius: 50%;
+  border: 2px solid #8b0000;
+  width: 45px; /* Reducir tamaño de la imagen */
+  height: 45px;
+  margin-right: 10px; /* Reducir espacio entre imagen y texto */
+}
+
+.comentarios-content > div {
+  margin-bottom: 10px; /* Reducir el margen */
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px; /* Reducir padding */
+}
+
+/* Estilo de la cruz de cierre */
+.comentarios-close {
+  color: #333;
+  font-size: 1.4rem; /* Reducir tamaño de la cruz */
+  font-weight: bold;
+  top: 10px; /* Ajustar posición */
+  right: 12px; /* Ajustar posición */
+  position: absolute;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Efecto de cambio de color al pasar el mouse sobre la cruz de cierre */
+.comentarios-close:hover {
+  color: #c7460b;
+}
+
 @media (max-width: 576px) {
   .class-titulo-index {
     margin-left: 0px;

@@ -1,0 +1,25 @@
+{
+  "comentarios": [
+    {
+      "nombreProducto": "Catena Zapata",
+      "usuario": "Ana López",
+      "calificacion": 5,
+      "comentario": "Excelente vino, ideal para cenas románticas.",
+      "imagen": "./images/cliente-uno.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Norton",
+      "usuario": "Juan Pérez",
+      "calificacion": 3,
+      "comentario": "Un poco ácido para mi gusto, pero de buena calidad.",
+      "imagen": "./images/cliente-dos.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Zuccardi",
+      "usuario": "María Gómez",
+      "calificacion": 4,
+      "comentario": "Buen precio por la calidad ofrecida.",
+      "imagen": "./images/cliente-tres.jpg"
+    }
+  ]
+}

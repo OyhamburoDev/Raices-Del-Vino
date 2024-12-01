@@ -38,6 +38,9 @@ function generarCards() {
         card.classList.add("card");
         card.style.width = "100%";
 
+        // **Usamos el nombre como un identificador único en el dataset**
+        card.dataset.nombre = producto.nombre; // Usamos el nombre para identificar la card
+
         // Creamos la imagen
         const img = document.createElement("img");
         img.src = producto.imagen;
@@ -106,8 +109,11 @@ function generarCards() {
             divInputButton.appendChild(inputCantidad);
             divInputButton.appendChild(btnAgregar);
 
+
+
             btnAgregar.addEventListener("click", function (e) {
                 e.preventDefault();  // Evita la acción por defecto del enlace
+                e.stopPropagation();
                 const cantidad = parseInt(inputCantidad.value);  // Obtener la cantidad seleccionada por el usuario
                 const productoAgregado = new Producto(producto.nombre, producto.tipo, producto.precio, cantidad, producto.imagen);  // Crear el objeto Producto
                 agregarProducto(productoAgregado);  // Llamar a la función para agregar el producto al carrito
@@ -123,6 +129,77 @@ function generarCards() {
 
 // Llamamos a generarCards inicialmente con los productos completos
 generarCards();
+
+
+
+async function traerLosDatos(){
+  try{
+const response = await fetch('comentarios.json');
+if(!response.ok){
+  throw new Error(`Error al cargar los datos: ${response.statustext}`);
+}
+
+const datos = await response.json();
+
+configurarEventos(datos.comentarios);
+
+}catch(error){
+  console.error(error);
+  }
+}
+
+function configurarEventos(comentarios){
+  const cards = document.querySelectorAll('.card');
+  
+  cards.forEach(card =>{
+    const nombreProducto = card.dataset.nombre;
+
+  card.addEventListener('click',()=>{
+    const producto = comentarios.find(p => p.nombreProducto === nombreProducto)
+  
+  if(producto){
+    mostrarModal(producto);
+  }else{
+    console.error('Producto no encontrado en el archivo JSON')
+  }
+  })
+  })
+
+}
+
+function mostrarModal(producto) {
+  const estrellas = '⭐'.repeat(producto.calificacion);
+  Swal.fire({
+    title: 'Comentarios de Clientes',
+    html: `
+      <div style="display: flex; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+        <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 45px; height: 45px; border-radius: 50%; margin-right: 15px; border: 2px solid #FFD700;">
+        <div style="text-align: left;">
+          <p style="font-weight: bold; font-size: 1rem; color: #333;">${producto.usuario}</p>
+          <p style="font-size: 0.9rem; color: #555;">${producto.comentario}</p>
+          <p style="font-size: 1rem; color: #FFD700;">${estrellas}</p>
+        </div>
+      </div>
+    `, // Usamos `html` para incluir HTML dentro del modal
+    width: '350px', // Tamaño ajustado
+    showCloseButton: true, // Mostrar la cruz de cierre
+    showConfirmButton: false, // Eliminar el botón de confirmación
+    padding: '15px', // Reducir el padding
+    background: '#f8f8f8',
+    customClass: {
+      popup: 'comentarios-modal', // Clase personalizada solo para este modal
+      title: 'comentarios-title', // Clase para personalizar el título
+      content: 'comentarios-content', // Clase para el contenido
+      closeButton: 'comentarios-close' // Clase personalizada para la cruz
+    }
+  });
+}
+
+// Llamar a la función para traer los datos
+traerLosDatos();
+
+
+
 
 // Definimos la función para buscar productos
 function buscarProductos(textoBusqueda, productos) {
