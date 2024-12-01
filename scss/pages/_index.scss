@@ -1,10 +1,14 @@
 .bodyIndex {
-    background-image: url(../images/wine-2853916_1920.jpg);
-    font-family: 'Playfair Display', serif; /* Aplica Playfair Display como fuente principal */
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-  }
+  background-image: url(../images/body-fondo.jpg);
+  font-family: 'Playfair Display', serif; /* Aplica Playfair Display como fuente principal */
+  background-repeat: no-repeat;
+  background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+  background-position: center center; /* Centra la imagen en el fondo */
+  background-position: center 25%; /* Ajusta la posición vertical para bajarla */
+  width: 100%;
+  height: 100vh; /* Usa la altura de la ventana del navegador */
+  margin: 0; /* Asegura que no haya margen extra */
+}
    
   .logo-marca-index {
     border-radius: 50%;
@@ -191,7 +195,7 @@
   width: 30rem;
   height: 100%;
   background-color: #ffffff;
-  border-radius: 12px 0 0 12px;
+  border-radius: 2px 0 0 2px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   padding: 15px;
   transition: right 0.3s ease;
@@ -435,7 +439,7 @@ h2{
   font-family: "Arial", sans-serif;
   padding: 15px; /* Reducir el padding */
   background: #fff;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Reducir sombra */
   height: 25rem; /* Limitar la altura del modal */
   position: relative;
