@@ -87,6 +87,11 @@ function generarCards() {
             inputCantidad.min = "1";
             inputCantidad.value = "1";
 
+            // Evitar que el evento click en el input se propague a la card y muestre el modal "comentarios"
+inputCantidad.addEventListener("click", function (e) {
+  e.stopPropagation();
+});
+
             // Crear el botón con el icono de Font Awesome dentro
             const btnAgregar = document.createElement("button");
             btnAgregar.classList.add("card-modern-btn"); // Aplica la clase del botón de la card moderna
