@@ -8,6 +8,20 @@
       "imagen": "./images/cliente-uno.jpg"
     },
     {
+      "nombreProducto": "Catena Zapata",
+      "usuario": "Marcos Roberto",
+      "calificacion": 3,
+      "comentario": "Excelente vino.",
+      "imagen": "./images/cliente-dos.jpg"
+    },
+    {
+      "nombreProducto": "Catena Zapata",
+      "usuario": "Fermin Enojon",
+      "calificacion": 5,
+      "comentario": "muy bueno el vino, me lo llevo para navidad.",
+      "imagen": "./images/cliente-tres.jpg"
+    },
+    {
       "nombreProducto": "Bodega Norton",
       "usuario": "Juan Pérez",
       "calificacion": 3,
@@ -15,7 +29,35 @@
       "imagen": "./images/cliente-dos.jpg"
     },
     {
+      "nombreProducto": "Bodega Luigi Bosca",
+      "usuario": "María Gómez",
+      "calificacion": 4,
+      "comentario": "Buen precio por la calidad ofrecida.",
+      "imagen": "./images/cliente-tres.jpg"
+    },
+    {
       "nombreProducto": "Bodega Zuccardi",
+      "usuario": "María Gómez",
+      "calificacion": 4,
+      "comentario": "Buen precio por la calidad ofrecida.",
+      "imagen": "./images/cliente-tres.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Susana Balbo",
+      "usuario": "María Gómez",
+      "calificacion": 4,
+      "comentario": "Buen precio por la calidad ofrecida.",
+      "imagen": "./images/cliente-tres.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Chandon",
+      "usuario": "María Gómez",
+      "calificacion": 4,
+      "comentario": "Buen precio por la calidad ofrecida.",
+      "imagen": "./images/cliente-tres.jpg"
+    },
+    {
+      "nombreProducto": "Sacacorchos",
       "usuario": "María Gómez",
       "calificacion": 4,
       "comentario": "Buen precio por la calidad ofrecida.",

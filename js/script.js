@@ -131,56 +131,60 @@ function generarCards() {
 generarCards();
 
 
+async function traerLosDatos() {
+  try {
+    const response = await fetch('comentarios.json');
+    if (!response.ok) {
+      throw new Error(`Error al cargar los datos: ${response.statusText}`);
+    }
 
-async function traerLosDatos(){
-  try{
-const response = await fetch('comentarios.json');
-if(!response.ok){
-  throw new Error(`Error al cargar los datos: ${response.statustext}`);
-}
+    const datos = await response.json();
+    configurarEventos(datos.comentarios);
 
-const datos = await response.json();
-
-configurarEventos(datos.comentarios);
-
-}catch(error){
-  console.error(error);
+  } catch (error) {
+    console.error(error);
   }
 }
 
-function configurarEventos(comentarios){
+function configurarEventos(comentarios) {
   const cards = document.querySelectorAll('.card');
   
-  cards.forEach(card =>{
+  cards.forEach(card => {
     const nombreProducto = card.dataset.nombre;
 
-  card.addEventListener('click',()=>{
-    const producto = comentarios.find(p => p.nombreProducto === nombreProducto)
+    card.addEventListener('click', () => {
+      const comentariosProducto = comentarios.filter(p => p.nombreProducto === nombreProducto);
   
-  if(producto){
-    mostrarModal(producto);
-  }else{
-    console.error('Producto no encontrado en el archivo JSON')
-  }
-  })
-  })
-
+      if (comentariosProducto.length > 0) {
+        // Mostrar el modal con todos los comentarios
+        mostrarModal(comentariosProducto);
+      } else {
+        console.error('No hay comentarios para este producto en el archivo JSON');
+      }
+    });
+  });
 }
 
-function mostrarModal(producto) {
-  const estrellas = '⭐'.repeat(producto.calificacion);
-  Swal.fire({
-    title: 'Comentarios de Clientes',
-    html: `
+function mostrarModal(comentariosProducto) {
+  // Construir el contenido HTML para todos los comentarios
+  const contenidoComentarios = comentariosProducto.map(comentario => {
+    const estrellas = '⭐'.repeat(comentario.calificacion);
+    return `
       <div style="display: flex; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
-        <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 45px; height: 45px; border-radius: 50%; margin-right: 15px; border: 2px solid #FFD700;">
+        <img src="${comentario.imagen}" alt="${comentario.usuario}" style="width: 45px; height: 45px; border-radius: 50%; margin-right: 15px; border: 2px solid #FFD700;">
         <div style="text-align: left;">
-          <p style="font-weight: bold; font-size: 1rem; color: #333;">${producto.usuario}</p>
-          <p style="font-size: 0.9rem; color: #555;">${producto.comentario}</p>
+          <p style="font-weight: bold; font-size: 1rem; color: #333;">${comentario.usuario}</p>
+          <p style="font-size: 0.9rem; color: #555;">${comentario.comentario}</p>
           <p style="font-size: 1rem; color: #FFD700;">${estrellas}</p>
         </div>
       </div>
-    `, // Usamos `html` para incluir HTML dentro del modal
+    `;
+  }).join(''); // Unir todos los comentarios en una sola cadena
+
+  // Mostrar el modal con el contenido
+  Swal.fire({
+    title: 'Comentarios de Clientes',
+    html: contenidoComentarios, // Aquí se incluyen todos los comentarios
     width: '350px', // Tamaño ajustado
     showCloseButton: true, // Mostrar la cruz de cierre
     showConfirmButton: false, // Eliminar el botón de confirmación

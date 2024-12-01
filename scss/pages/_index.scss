@@ -428,13 +428,16 @@ h2{
   background-color: #7a1616 !important; /* Color de fondo cuando el mouse pasa por encima */
 }
 
+
+
+// MODALES PARA LOS COMENTARIOS DE LOS CLIENTES
 .comentarios-modal{
   font-family: "Arial", sans-serif;
   padding: 15px; /* Reducir el padding */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Reducir sombra */
-  max-height: 70vh; /* Limitar la altura del modal */
+  height: 25rem; /* Limitar la altura del modal */
   position: relative;
   overflow: hidden; /* Evitar que el contenido sobrepase los bordes */
 }
