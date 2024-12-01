@@ -486,6 +486,10 @@ h2{
   position: absolute;
   cursor: pointer;
   transition: color 0.3s ease;
+  outline: none !important; /* Elimina contornos */
+  box-shadow: none !important; /* Elimina sombras adicionales */
+  border: none !important; /* Elimina cualquier borde visible */
+  background: transparent !important; /* Asegúrate de que no haya fondo */
 }
 
 /* Efecto de cambio de color al pasar el mouse sobre la cruz de cierre */
