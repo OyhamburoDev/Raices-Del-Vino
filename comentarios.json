@@ -4,63 +4,119 @@
       "nombreProducto": "Catena Zapata",
       "usuario": "Ana López",
       "calificacion": 5,
-      "comentario": "Excelente vino, ideal para cenas románticas.",
+      "comentario": "Este vino es espectacular, perfecto para celebraciones especiales.",
       "imagen": "./images/cliente-uno.jpg"
     },
     {
       "nombreProducto": "Catena Zapata",
       "usuario": "Marcos Roberto",
-      "calificacion": 3,
-      "comentario": "Excelente vino.",
+      "calificacion": 4,
+      "comentario": "Sorprendentemente equilibrado, un gran descubrimiento.",
       "imagen": "./images/cliente-dos.jpg"
     },
     {
       "nombreProducto": "Catena Zapata",
-      "usuario": "Fermin Enojon",
+      "usuario": "Fermín Sánchez",
       "calificacion": 5,
-      "comentario": "muy bueno el vino, me lo llevo para navidad.",
+      "comentario": "Ideal para acompañar carnes rojas, muy recomendado.",
+      "imagen": "./images/cliente-tres.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Norton",
+      "usuario": "Carla Méndez",
+      "calificacion": 4,
+      "comentario": "Un vino elegante, sorprende con un final suave.",
       "imagen": "./images/cliente-tres.jpg"
     },
     {
       "nombreProducto": "Bodega Norton",
       "usuario": "Juan Pérez",
       "calificacion": 3,
-      "comentario": "Un poco ácido para mi gusto, pero de buena calidad.",
-      "imagen": "./images/cliente-dos.jpg"
+      "comentario": "La acidez es un poco marcada, pero con quesos combina bien.",
+      "imagen": "./images/cliente-dos-dos.jpg"
     },
     {
       "nombreProducto": "Bodega Luigi Bosca",
-      "usuario": "María Gómez",
+      "usuario": "Sofía Ramírez",
       "calificacion": 4,
-      "comentario": "Buen precio por la calidad ofrecida.",
+      "comentario": "Muy buen equilibrio entre precio y calidad, excelente elección.",
+      "imagen": "./images/cliente-tres.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Luigi Bosca",
+      "usuario": "Tomás Villalba",
+      "calificacion": 5,
+      "comentario": "Exquisito, perfecto para acompañar pastas.",
+      "imagen": "./images/cliente-tres.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Luigi Bosca",
+      "usuario": "Martín Romero",
+      "calificacion": 4,
+      "comentario": "Un aroma intenso que me encantó, muy recomendable.",
+      "imagen": "./images/cliente-dos.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Zuccardi",
+      "usuario": "Camila Ortiz",
+      "calificacion": 4,
+      "comentario": "Un vino muy fresco, ideal para días calurosos.",
       "imagen": "./images/cliente-tres.jpg"
     },
     {
       "nombreProducto": "Bodega Zuccardi",
-      "usuario": "María Gómez",
+      "usuario": "Lucas Fernández",
       "calificacion": 4,
-      "comentario": "Buen precio por la calidad ofrecida.",
-      "imagen": "./images/cliente-tres.jpg"
+      "comentario": "La textura y el sabor son sorprendentes, una buena elección.",
+      "imagen": "./images/cliente-uno.jpg"
     },
     {
       "nombreProducto": "Bodega Susana Balbo",
       "usuario": "María Gómez",
+      "calificacion": 5,
+      "comentario": "Impresionante sabor, se nota la calidad de la bodega.",
+      "imagen": "./images/cliente-dos.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Susana Balbo",
+      "usuario": "Diego Castro",
+      "calificacion": 5,
+      "comentario": "Un vino para repetir, lo recomiendo ampliamente.",
+      "imagen": "./images/cliente-dos-dos.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Susana Balbo",
+      "usuario": "Sofía Álvarez",
       "calificacion": 4,
-      "comentario": "Buen precio por la calidad ofrecida.",
+      "comentario": "Perfecto para cenas con amigos, un toque único.",
       "imagen": "./images/cliente-tres.jpg"
     },
     {
       "nombreProducto": "Bodega Chandon",
-      "usuario": "María Gómez",
+      "usuario": "Fernando Morales",
       "calificacion": 4,
-      "comentario": "Buen precio por la calidad ofrecida.",
-      "imagen": "./images/cliente-tres.jpg"
+      "comentario": "El espumante ideal para brindar en cualquier ocasión.",
+      "imagen": "./images/cliente-uno.jpg"
+    },
+    {
+      "nombreProducto": "Bodega Chandon",
+      "usuario": "Elena García",
+      "calificacion": 5,
+      "comentario": "Un clásico que nunca decepciona, siempre delicioso.",
+      "imagen": "./images/cliente-dos.jpg"
     },
     {
       "nombreProducto": "Sacacorchos",
-      "usuario": "María Gómez",
+      "usuario": "Laura Méndez",
       "calificacion": 4,
-      "comentario": "Buen precio por la calidad ofrecida.",
+      "comentario": "Muy práctico y resistente, un producto de calidad.",
+      "imagen": "./images/cliente-dos-dos.jpg"
+    },
+    {
+      "nombreProducto": "Sacacorchos",
+      "usuario": "Pablo Ruiz",
+      "calificacion": 5,
+      "comentario": "Me encantó, nunca fue tan fácil abrir botellas.",
       "imagen": "./images/cliente-tres.jpg"
     }
   ]
