@@ -455,7 +455,34 @@ function actualizarCarrito(){
     }
 }
 
-// Selecciona el botón "Ir a pagar"
+
+
+
+const divDescuento = document.querySelector('.carrito-descuento');
+
+// Crear el contenedor para el input y el botón
+const divDescuentoElement = document.createElement('div');
+divDescuentoElement.classList.add("descuentoElement");
+
+// Crear el input para el código de descuento
+const inputDescuento = document.createElement('input');
+inputDescuento.classList.add("descuentoInput");
+inputDescuento.placeholder = 'Código de Descuento';
+divDescuentoElement.appendChild(inputDescuento);
+
+// Crear el boton para aplicar el descuento
+const botonDescuento = document.createElement('button');
+botonDescuento.classList.add("buttonDescuento");
+botonDescuento.textContent= 'Aplicar';
+divDescuentoElement.appendChild(botonDescuento);
+
+// Finalmente, agregar todo al divDescuento
+divDescuento.appendChild(divDescuentoElement);
+
+
+
+
+// Selecciona el botón "Ir a pagar"s
 const botonPagar = document.querySelector('.boton-prueba');
 
 // Función para habilitar/deshabilitar el botón según el contenido del carrito
@@ -472,6 +499,7 @@ function actualizarEstadoBotonPagar(){
 
 actualizarEstadoBotonPagar()
 
+// Funcion para el formulario de pago final
 function funcionFinal() {
     document
       .getElementById("btn-ir-a-pagar")
