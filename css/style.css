@@ -277,7 +277,7 @@
 .cantidad-precio .precioTotalParrafo {
   margin-bottom: 0px;
   font-size: 0.9rem;
-  color: #333;
+  color: #333333;
 }
 
 /* Estilo específico para el botón de eliminar */
@@ -332,20 +332,21 @@
   background-color: #43a047;
 }
 
-.boton-desactivado {
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
-}
-
 .descuentoElement {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
 }
 
 .descuentoInput {
   padding: 8px 20px;
+}
+
+.mensajeError {
+  color: rgb(255, 0, 0);
+  margin-bottom: 0px;
+  display: none;
 }
 
 .buttonDescuento {
@@ -357,6 +358,16 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.buttonDescuento:hover {
+  background-color: #2e2d2d;
+}
+
+.boton-desactivado {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
 }
 
 /* Modal personalizado */
@@ -485,6 +496,40 @@
   color: #c7460b;
 }
 
+.tachado {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px; /* Grosor de la línea */
+  text-decoration-color: rgb(255, 69, 69); /* Color de la línea */
+  text-decoration-skip-ink: none; /* Asegura que la línea pase por todo el texto */
+  color: rgba(190, 38, 38, 0.7); /* Color del texto ligeramente más claro */
+  transition: all 0.5s ease; /* Animación suave */
+  display: inline-block; /* Mantiene todo en línea */
+}
+
+.descuentoFinal {
+  background-color: #000000; /* Un verde llamativo para resaltar la rebaja */
+  color: #fff; /* Texto blanco para mayor contraste */
+  padding: 8px 15px; /* Más espacio alrededor del texto */
+  border-radius: 10px; /* Bordes más redondeados */
+  font-size: 1em; /* Tamaño de fuente más cómodo */
+  font-weight: 600; /* Resalta el texto */
+  text-align: center; /* Centrado */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  margin-top: 15px; /* Separación más pronunciada */
+  animation: fadeIn 0.6s ease-in-out; /* Animación de entrada */
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @media (max-width: 576px) {
   .class-titulo-index {
     margin-left: 0px;

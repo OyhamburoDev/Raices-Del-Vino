@@ -361,6 +361,7 @@ function mostrarCarrito() {
         const precioTotalParrafo = document.createElement("p");
         precioTotalParrafo.classList.add("precioTotalParrafo")
         precioTotalParrafo.innerHTML = `$${producto.precio * producto.cantidad}`;
+       
 
         divCantPrecio.appendChild(cantidadParrafo);
         divCantPrecio.appendChild(precioTotalParrafo);
@@ -457,7 +458,7 @@ function actualizarCarrito(){
 
 
 
-
+// Aqui comienza el div de "Descuentos"
 const divDescuento = document.querySelector('.carrito-descuento');
 
 // Crear el contenedor para el input y el botón
@@ -476,6 +477,12 @@ botonDescuento.classList.add("buttonDescuento");
 botonDescuento.textContent= 'Aplicar';
 divDescuentoElement.appendChild(botonDescuento);
 
+// crear un parrafo con el mensaje de error
+const mensajeError = document.createElement('p');
+mensajeError.classList.add('mensajeError');
+mensajeError.textContent= 'Código incorrecto. Intenta de nuevo.';
+divDescuentoElement.appendChild(mensajeError);
+
 // Finalmente, agregar todo al divDescuento
 divDescuento.appendChild(divDescuentoElement);
 
@@ -487,17 +494,47 @@ const botonPagar = document.querySelector('.boton-prueba');
 
 // Función para habilitar/deshabilitar el botón según el contenido del carrito
 function actualizarEstadoBotonPagar(){
-    console.log(carrito.length);  // Diagnóstico de la longitud del carrito
     if(carrito.length === 0){
+      botonDescuento.disabled = true;
+      botonDescuento.classList.add('boton-desactivado');
         botonPagar.disabled = true;
         botonPagar.classList.add('boton-desactivado');
     }else{
+      botonDescuento.disabled = false;
+      botonDescuento.classList.remove('boton-desactivado');
         botonPagar.disabled = false;
         botonPagar.classList.remove('boton-desactivado');
     }
 }
 
 actualizarEstadoBotonPagar()
+
+
+
+// Funcion para aplicar descuento en el carrito de compras
+function aplicarDescuento(){
+  const codigoDescuento = inputDescuento.value.trim();
+
+ const precioTotalElemento = document.getElementById("precioTotal")
+ const finalConDescuento = document.querySelector(".preciosFinales")
+
+if(codigoDescuento === 'mendoza2025'){
+precioTotalElemento.classList.add("tachado");
+
+const conDescuento = document.createElement('p');
+conDescuento.innerHTML= '¡Descuento aplicado! Tu nuevo precio es: $XXX.'
+conDescuento.classList.add("descuentoFinal")
+finalConDescuento.appendChild(conDescuento);
+mensajeError.style.display = 'none';
+
+  }else{
+    mensajeError.style.display = 'block';
+    precioTotalElemento.classList.remove("tachado");
+  }
+}
+// Le asignamos el evento, al botón aplicar, para mostrar el descuento.
+botonDescuento.addEventListener('click', aplicarDescuento);
+
 
 // Funcion para el formulario de pago final
 function funcionFinal() {
