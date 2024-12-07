@@ -81,15 +81,18 @@
   mask-size: 100% 100%;
 }
 
-.boton-rami {
+.boton-carrusel {
   opacity: 0; /* No visible por defecto */
   visibility: hidden; /* No interactuables */
   transition: opacity 0.3s ease, visibility 0.3s ease; /* Suavizamos el cambio */
   z-index: 1;
+  i{
+    color: #1776f3;
+  }
 }
 
 /* Mostramos los botones solo cuando el mouse pasa por encima del carrusel */
-#carouselExample:hover .boton-rami {
+#carouselExample:hover .boton-carrusel {
   opacity: 1; /* Los hacemos visibles */
   visibility: visible; /* Los hace interactuables */
 }
@@ -235,7 +238,7 @@
 
 .card-modern-btn{
   background-color: #b02a2a; /* Rojo uva */
-  color: white;
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 50%;
   width: 30px;
@@ -315,15 +318,6 @@ h2{
 #close-carrito:hover {
   color: #e03e3e;
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -462,7 +456,7 @@ h2{
 
 .buttonDescuento{
   background-color: #000000;
-  color: white;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 10px 20px;
   font-size: 1rem;
@@ -490,14 +484,14 @@ h2{
 
 .swal2-confirm-custom {
   background-color: #388e3c !important;
-  color: white !important;
+  color: rgb(255, 255, 255) !important;
   border-radius: 8px;
   font-size: 14px;
 }
 
 .swal2-cancel-custom {
   background-color: #616161 !important;
-  color: white !important;
+  color: rgb(255, 255, 255) !important;
   border-radius: 8px;
   font-size: 14px;
 }
@@ -530,7 +524,7 @@ h2{
 
 .custom-confirm-button {
   background-color: #9b1e1e !important; /* Color rojo vino */
-  color: white !important; /* Color del texto blanco */
+  color: rgb(255, 255, 255) !important; /* Color del texto blanco */
   border-radius: 5px; /* Bordes redondeados */
   padding: 10px 20px; /* Relleno para hacerlo más grande */
   font-size: 16px; /* Tamaño de la fuente */
