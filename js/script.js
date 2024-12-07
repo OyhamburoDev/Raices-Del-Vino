@@ -521,7 +521,7 @@ actualizarEstadoBotonPagar()
 
 // Funcion para aplicar descuento en el carrito de compras
 function aplicarDescuento(){
-  const codigoDescuento = inputDescuento.value.trim();
+  const codigoDescuento = inputDescuento.value.trim().toLowerCase();
 
  const precioTotalElemento = document.getElementById("precioTotal")
  const finalConDescuento = document.querySelector(".preciosFinales")
