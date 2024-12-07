@@ -98,15 +98,33 @@
       </nav>
     </header>
     <section>
-      <div class="alert alert-warning text-center" role="alert">
-        ¡Obtén 10% de descuento con el código <strong>Mendoza2025</strong>!
+      <div class="alert alert-warning text-center " role="alert">
+        ¡Obtén 20% de descuento con el código <strong>Mendoza2025</strong>!
       </div>
     </section>
 
     
 
     <!-- AQUÍ COMIENZA EL MAIN -->
-    <main>
+    <main class="classMain">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active fading-image">
+            <img src="images/banner-tres.png" class="d-block w-100 " alt="...">
+          </div>
+          <div class="carousel-item fading-image">
+            <img src="images/banner-arbolito.png" class="d-block w-100 " alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
       <div class="container"></div> 
       <!-- Aqí agregamos las cards con js, utlizando estilos de bootstrap -->
     </main>

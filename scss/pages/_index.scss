@@ -1,5 +1,6 @@
 .bodyIndex {
-  background-image: url(../images/body-fondo.jpg);
+  // background-image: url(../images/body-fondo-tres.jpg);
+  background-color: rgb(212, 200, 200);
   font-family: 'Playfair Display', serif; /* Aplica Playfair Display como fuente principal */
   background-repeat: no-repeat;
   background-size: cover; /* Hace que la imagen cubra toda la pantalla */
@@ -41,6 +42,39 @@
     border-bottom: 2px solid #5C1A45; /* Línea inferior cambia a rojo vino */
 }
 
+.alert-warning{
+  margin-bottom: 0px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.carousel-item img {
+  
+  height: 20rem; /* 50% de la altura del viewport */
+  object-fit: cover; /* Asegura que la imagen se ajuste al espacio sin deformarse */
+}
+
+.fading-image {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Ajusta según el tamaño de tu imagen */
+  overflow: hidden; /* Oculta cualquier contenido fuera del contenedor */
+}
+
+.fading-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen se ajuste bien al contenedor */
+  
+  /* Aplicamos un gradiente como máscara para el desvanecido */
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  
+  /* Asegura que el efecto sea suave */
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
 
   .carrito-container {
     position: relative; // Define este contenedor como base para la posición absoluta
@@ -79,10 +113,7 @@
       }
     }
   
-  .textoTachado{
-    text-decoration: line-through;
-    border-radius: 0;
-  }
+  
   
 .card{
   width: 160px;
@@ -181,8 +212,15 @@
   transform: scale(1.1);
 }
 
+.classMain{
+  height: 70rem;
+}
 
-
+.container{
+ position: relative;
+ margin-top: -90px; /* Para que las cards se superpongan al carousel */
+ z-index: 10; /* Asegura que las cards estén encima */
+}
 
 // AQUI COMIENZA EL CARRITO
 
@@ -339,7 +377,7 @@ h2{
   border-top: 1px solid #e0e0e0;
   padding: 10px 0;
   margin-top: 10px;
-  text-align: right;
+  text-align: left;
   font-size: 1rem;
   font-weight: bold;
 }
@@ -533,19 +571,25 @@ h2{
 }
 
 .tachado {
-  text-decoration: line-through;
-  text-decoration-thickness: 2px; /* Grosor de la línea */
-  text-decoration-color: rgb(255, 69, 69); /* Color de la línea */
-  text-decoration-skip-ink: none; /* Asegura que la línea pase por todo el texto */
-  color: rgba(190, 38, 38, 0.7); /* Color del texto ligeramente más claro */
-  transition: all 0.5s ease; /* Animación suave */
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  color: rgba(0, 0, 0, 0.7); /* Color del texto */
   display: inline-block; /* Mantiene todo en línea */
+}
+.tachado::after {
+  content: ''; /* Pseudo-elemento vacío para la línea */
+  position: absolute; /* Ubicación relativa al texto */
+  width: 100%; /* La línea cubre todo el ancho del texto */
+  height: 2px; /* Grosor de la línea */
+  background-color: rgb(255, 0, 0); /* Color de la línea */
+  left: 0; /* Alinea la línea al inicio del texto */
+  top: 50%; /* Centra la línea en el medio del texto */
+  transform: translateY(-50%); /* Ajusta la línea al centro exacto */
+  pointer-events: none; /* La línea no afecta los clics o eventos */
 }
 
 
-
 .descuentoFinal {
-  background-color: #000000; /* Un verde llamativo para resaltar la rebaja */
+  background-color: #000000; 
   color: #fff; /* Texto blanco para mayor contraste */
   padding: 8px 15px; /* Más espacio alrededor del texto */
   border-radius: 10px; /* Bordes más redondeados */

@@ -617,7 +617,6 @@ function funcionFinal() {
 
 // GUARDAR LOS PRODUCTOS EN LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
-    console.log("Guardando carrito:", carrito);
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardamos el carrito como texto JSON
 }
 
