@@ -47,8 +47,13 @@
   padding-top: 8px;
   padding-bottom: 8px;
 }
+
+
+// AQUI COMIENZAN LOS ESTILOS PARA EL CARROUSEL
+.carousel{
+  position: relative;
+}
 .carousel-item img {
-  
   height: 20rem; /* 50% de la altura del viewport */
   object-fit: cover; /* Asegura que la imagen se ajuste al espacio sin deformarse */
 }
@@ -76,17 +81,52 @@
   mask-size: 100% 100%;
 }
 
-  .carrito-container {
+.boton-rami {
+  opacity: 0; /* No visible por defecto */
+  visibility: hidden; /* No interactuables */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Suavizamos el cambio */
+  z-index: 1;
+}
+
+/* Mostramos los botones solo cuando el mouse pasa por encima del carrusel */
+#carouselExample:hover .boton-rami {
+  opacity: 1; /* Los hacemos visibles */
+  visibility: visible; /* Los hace interactuables */
+}
+
+#botonIzquierdo{
+  position: absolute;
+  top: 40%;
+  border-top-right-radius: 50px;  /* Solo el borde superior derecho */
+  border-bottom-right-radius: 50px;  /* Solo el borde inferior derecho */
+  height: 4rem;
+  width: 4rem;
+  left: 0; /* Coloca el botón sobre el margen izquierdo */
+}
+
+/* Botón derecho */
+#botonDerecho {
+  position: absolute;
+  top: 40%;
+  right: 0; /* Coloca el botón sobre el margen derecho */
+  border-top-left-radius: 50px;  /* Solo el borde superior derecho */
+  border-bottom-left-radius: 50px;  /* Solo el borde inferior derecho */
+  height: 4rem;
+  width: 4rem;
+}
+
+
+
+.carrito-container {
     position: relative; // Define este contenedor como base para la posición absoluta
     
     // Estilo del ícono
-    .fa-shopping-cart {
+.fa-shopping-cart {
       font-size: 24px; // Ajusta el tamaño del carrito si es necesario
       position: relative; // Esto asegura que el círculo se posicione relativo al ícono
     }
     
     // Círculo rojo con número
-
       .carrito-container {
         position: relative; // Base para posicionar el círculo relativo al ícono
       }
@@ -218,7 +258,7 @@
 
 .container{
  position: relative;
- margin-top: -90px; /* Para que las cards se superpongan al carousel */
+ margin-top: -75px; /* Para que las cards se superpongan al carousel */
  z-index: 10; /* Asegura que las cards estén encima */
 }
 

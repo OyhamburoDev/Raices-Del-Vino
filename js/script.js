@@ -312,6 +312,8 @@ function agregarProducto(producto) {
     });
 }
 
+
+
 // MOSTRAR LOS PRODUCTOS EN EL CARRITO
 function mostrarCarrito() {
     const cartDetails = document.getElementById("cartDetails");
@@ -321,12 +323,11 @@ function mostrarCarrito() {
         // Mostrar un mensaje si el carrito está vacío
         cartDetails.innerHTML = `<p>No hay productos en el carrito.</p>`;
         document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $0`;
-        return;
     }
 
-    let total = 0;
+    let total = 0; 
 
-    carrito.forEach((producto, index) => {
+    carrito.forEach((producto, index) => { 
         const productoDiv = document.createElement("div");
         productoDiv.classList.add("producto-carrito");
         productoDiv.style.opacity = 0; // Animación de entrada
@@ -399,12 +400,16 @@ botonEliminar.appendChild(spanEliminar);
             productoDiv.style.transition = 'opacity 0.5s';
         }, 100);
 
-        total += producto.precio * producto.cantidad;
+        total += Number(producto.precio) * Number(producto.cantidad);
+       
+       
     });
-
-    document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $${total}`;
     
+    document.getElementById("precioTotal").innerHTML = `<strong>Precio final: </strong> $${total}`;
+     
+    return total;
 }
+
 
 
 
@@ -439,10 +444,14 @@ carrito = [];
 const cartDetails = document.getElementById("cartDetails");
 cartDetails.innerHTML = 'Gracias por tu compra!'; // Limpiar el contenido visual
 
-// Actualizar el total y la cantidad en la interfaz
+ // Limpiar el mensaje de descuento si existe
+ actualizarEstadoBotonPagar();
+ const finalConDescuento = document.querySelector(".preciosFinales");
+ finalConDescuento.innerHTML = ''; 
+ // Limpiar el valor del input de descuento
+ inputDescuento.value = '';  // Aquí es donde limpias el texto ingresado en el input
 document.getElementById("precioTotal").innerHTML = ``;
 document.getElementById("cantidadCarrito").innerHTML = '';
-actualizarEstadoBotonPagar();
 }
 
 function actualizarCarrito(){
@@ -488,8 +497,7 @@ divDescuento.appendChild(divDescuentoElement);
 
 
 
-
-// Selecciona el botón "Ir a pagar"s
+// Selecciona el botón "Ir a pagar"
 const botonPagar = document.querySelector('.boton-prueba');
 
 // Función para habilitar/deshabilitar el botón según el contenido del carrito
@@ -518,14 +526,29 @@ function aplicarDescuento(){
  const precioTotalElemento = document.getElementById("precioTotal")
  const finalConDescuento = document.querySelector(".preciosFinales")
 
+ const total = mostrarCarrito(); // Llamar a la función mostrarCarrito y obtener el total
+
 if(codigoDescuento === 'mendoza2025'){
+          // Aplicar descuento (20%)
+          const descuento = total * 0.20; // 20% de descuento
+          const totalConDescuento = total - descuento;
 precioTotalElemento.classList.add("tachado");
 
 const conDescuento = document.createElement('p');
-conDescuento.innerHTML= '¡Descuento aplicado! Tu nuevo precio es: $XXX.'
+conDescuento.innerHTML= `¡Descuento aplicado! Tu nuevo precio es: $${totalConDescuento.toFixed(2)}.`
 conDescuento.classList.add("descuentoFinal")
 finalConDescuento.appendChild(conDescuento);
 mensajeError.style.display = 'none';
+
+const botonesAgregarProducto = document.querySelectorAll(".card-modern-btn");
+const botonesCancelarProducto = document.querySelectorAll(".eliminar-btn");
+botonesAgregarProducto.forEach(boton => {
+    boton.disabled = true; // Deshabilitar todos los botones
+})
+// Deshabilitar los botones de cancelar producto
+botonesCancelarProducto.forEach(boton => {
+  boton.disabled = true; // Deshabilitar todos los botones de eliminar
+});
 
   }else{
     mensajeError.style.display = 'block';
@@ -534,6 +557,7 @@ mensajeError.style.display = 'none';
 }
 // Le asignamos el evento, al botón aplicar, para mostrar el descuento.
 botonDescuento.addEventListener('click', aplicarDescuento);
+
 
 
 // Funcion para el formulario de pago final
