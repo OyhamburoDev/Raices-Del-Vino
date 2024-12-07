@@ -535,7 +535,7 @@ if(codigoDescuento === 'mendoza2025'){
 precioTotalElemento.classList.add("tachado");
 
 const conDescuento = document.createElement('p');
-conDescuento.innerHTML= `¡Descuento aplicado! Tu nuevo precio es: $${totalConDescuento}.`
+conDescuento.innerHTML= `¡Descuento aplicado! Tu nuevo precio es: $${totalConDescuento}`
 conDescuento.classList.add("descuentoFinal")
 finalConDescuento.appendChild(conDescuento);
 mensajeError.style.display = 'none';
