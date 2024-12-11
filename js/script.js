@@ -1,6 +1,6 @@
 
 
-// ARRAY DE PRODUCTOS.
+// Array de productos.
 const productos = [
     { nombre: "Catena Zapata", tipo: "Vino Tinto", precio: 5000, imagen: "./images/botella-vino-tinto-uno.jpg" },
     { nombre: "Bodega Norton", tipo: "Vino Tinto", precio: 5000, imagen: "./images/botella-vino-tinto-dos.jpg" },
@@ -16,7 +16,7 @@ const productos = [
 // Filtrados globales
 let filtrados = productos;  // Inicializamos la variable filtrados con todos los productos
 
-// FUNCIÓN PARA GENERAR LAS CARDS EN EL INDEX CON CLASES DE BOOTSTRAP
+// Función para generar las cards en el index con clases de bootstrap
 function generarCards() {
     const contenedor = document.querySelector(".container");  // ---> este es el container principal
     contenedor.innerHTML = "";  // Limpiamos el contenedor antes de agregar las nuevas cards
@@ -136,20 +136,34 @@ inputCantidad.addEventListener("click", function (e) {
 generarCards();
 
 
+/**
+ * Función asincrónica para traer datos desde el archivo JSON.
+ * Utiliza fetch para obtener los datos, verifica si la respuesta es exitosa
+ * y luego pasa los comentarios al configurador de eventos. 
+ * Si ocurre un error, lo captura y lo muestra en la consola.
+ */
 async function traerLosDatos() {
   try {
+    // Realizamos la solicitud al archivo JSON
     const response = await fetch('comentarios.json');
+    
+    // Verificamos si la respuesta fue exitosa
     if (!response.ok) {
       throw new Error(`Error al cargar los datos: ${response.statusText}`);
     }
 
+    // Convertimos la respuesta en un objeto JSON
     const datos = await response.json();
+
+    // Configuramos eventos con los datos obtenidos
     configurarEventos(datos.comentarios);
 
   } catch (error) {
+    // Capturamos y mostramos errores en la consola
     console.error(error);
   }
 }
+
 
 function configurarEventos(comentarios) {
   const cards = document.querySelectorAll('.card');
@@ -245,20 +259,20 @@ seleccionarInput.addEventListener("input", function() {
 
 
 
-//  ------> CARRITO Y FORMULARIO <---------
-// INICIALIZAMOS EL CARRITO COMO UN ARRAY VACIO
+//                                          ------> CARRITO Y FORMULARIO <---------
+
+// Iniciamos el carrito como un array vacio
 let carrito = []; 
 
 
-// CARGAR EL CARRITO DESDE LOCAL STORAGE CUANDO LA PÁGINA SE CARGA Y MOSTRARLO EN LA PÁGINA
+// Cargar el carrito desde local storage cuando la página se carga y mostrarlo en la página
 window.onload = function() {
     cargarCarritoDeLocalStorage(); 
 }
 
-// OBTENER EL CARRITO DE LOCAL STORAGE  recupera y muestra los datos guardados.
+// Obtener el carrito de local storage, recupera y muestra los datos guardados.
 function cargarCarritoDeLocalStorage() {
     const carritoGuardado = localStorage.getItem("carrito"); // Obtenemos el carrito del Local Storage
-    console.log("Carrito cargado:", carritoGuardado);
     if (carritoGuardado) {
         carrito = JSON.parse(carritoGuardado); // Convertimos el string de vuelta a un objeto
         if (carrito.length === 0) {
@@ -272,7 +286,7 @@ function cargarCarritoDeLocalStorage() {
     }
 }
 
-// CLASE CONSTRUCTORA PARA ARMAR LOS OBJETOS DEL CARRITO
+// Clase CONSTRUCTORA para armar los objetos del carrito
 class Producto {
     constructor(nombre, tipoDeVino, precio, cantidad, imagen) {
         
@@ -298,7 +312,7 @@ const Toast = Swal.mixin({
 });
 
 
-// AGREGAR LOS PRODUCTOS SELECCIONADOS POR EL USUSARIO AL CARRITO
+// Agregar los productos seleccionados por el usuario al carrito
 function agregarProducto(producto) {
     carrito.push(producto); // Añadimos el producto al carrito
     mostrarCarrito(); // Mostramos el carrito actualizado en la página
@@ -314,7 +328,7 @@ function agregarProducto(producto) {
 
 
 
-// MOSTRAR LOS PRODUCTOS EN EL CARRITO
+// Mostrar los productos en el carrito
 function mostrarCarrito() {
     const cartDetails = document.getElementById("cartDetails");
     cartDetails.innerHTML = ''; // Limpiar el carrito antes de mostrarlo
@@ -413,7 +427,7 @@ botonEliminar.appendChild(spanEliminar);
 
 
 
-// ELIMINAR LOS PRODUCTOS SELECCIONADOS DEL CARRITO
+// Eliminar los productos seleccionados del carrito
 function eliminarProducto(index) {
     const productoEliminado = carrito[index].nombre; // Obtenemos el nombre del producto eliminado
     carrito.splice(index, 1); // Eliminamos el producto
@@ -430,7 +444,7 @@ function eliminarProducto(index) {
 }
 
 
-// FUNCION FINALIZAR COMPRA
+// Funcion finalizar Compra
 function finalizarCompra() {
    // Vaciar el carrito en el localStorage
 localStorage.removeItem("carrito");
@@ -659,7 +673,6 @@ carritoIcono.addEventListener('click', () => {
 carritoBotonCerrar.addEventListener('click', () => {
     carritoSidebar.classList.remove('active');
 });
-
 
 
 
