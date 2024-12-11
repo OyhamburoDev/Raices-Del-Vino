@@ -464,7 +464,7 @@ cartDetails.innerHTML = 'Gracias por tu compra!'; // Limpiar el contenido visual
  finalConDescuento.innerHTML = ''; 
  // Limpiar el valor del input de descuento
  inputDescuento.value = '';  // Aquí es donde limpias el texto ingresado en el input
-document.getElementById("precioTotal").innerHTML = ``;
+// document.getElementById("precioTotal").innerHTML = ``;
 document.getElementById("cantidadCarrito").innerHTML = '';
 }
 
